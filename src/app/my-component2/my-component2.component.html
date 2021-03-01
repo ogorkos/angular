@@ -1,0 +1,20 @@
+<p>my-component works!2222222</p>
+{{name}}
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let name of names">
+          <app-table-row [name]="name"></app-table-row>
+      </tr>
+      
+
+    </tbody>
+  </table>
