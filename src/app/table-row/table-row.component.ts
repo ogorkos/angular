@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-table-row',
@@ -9,10 +9,19 @@ export class TableRowComponent implements OnInit {
 
   constructor() { }
 
+  @Input() index: number
  @Input() name: string='test'
+ @Input() lastName: string='test'
+
+ @Output() onNewDelItem=new EventEmitter<any>();
 
   ngOnInit(): void {
     console.log(this.name)
+  }
+
+  delete(index:number):void{
+   
+    this.onNewDelItem.emit(index)
   }
 
 }
