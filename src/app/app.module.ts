@@ -6,6 +6,7 @@ import { MyComponent2 } from './my-component2/my-component2.component';
 import { TableRowComponent } from './table-row/table-row.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormComponent } from './form/form.component';
+import { FormSubscribeComponent } from './form-subscribe/form-subscribe.component';
 
 
 
@@ -15,7 +16,8 @@ import { FormComponent } from './form/form.component';
     MyComponentComponent,
     MyComponent2,
     TableRowComponent,
-    FormComponent
+    FormComponent,
+    FormSubscribeComponent
   ],
   imports: [
     BrowserModule,

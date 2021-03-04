@@ -11,8 +11,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let name of names">
-          <app-table-row [name]="name"></app-table-row>
+      <tr *ngFor="let name of names;let i = index">
+          <app-table-row
+          (onNewDelItem)="deleteItem($event)"
+          [index]="i"
+          [name]="name" 
+          [lastName]="localLastName"></app-table-row>
       </tr>
       
 

@@ -11,8 +11,13 @@ export class MyComponent2 implements OnInit {
   name2: string="Gena"
   name: string="My String"
   names = ['Ari', 'Carlos', 'Felipe', 'Nate'];
+  localLastName:string="My last name"
 
   ngOnInit(): void {
   }
 
+  deleteItem(index:number){
+    console.log(index+"!!!")
+    this.names.splice(index,1);
+  }
 }
