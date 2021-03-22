@@ -16,7 +16,7 @@ import { SetcolorComponent } from './setcolor/setcolor.component';
 import { ShowColorComponent } from './show-color/show-color.component';
 import { PlusMinusComponent } from './plus-minus/plus-minus.component';
 import { BtnPlusMinComponent } from './plus-minus/btn-plus-min/btn-plus-min.component';
-import { Page404Component } from './page404/page404.component';
+import { Page404Component } from './mainComponents/page404/page404.component';
 import { LoginComponent } from './mainComponents/login/login.component';
 
 

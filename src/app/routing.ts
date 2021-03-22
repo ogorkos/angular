@@ -4,7 +4,7 @@ import { MyComponent2 } from './my-component2/my-component2.component';
 import { FormComponent } from './form/form.component';
 import { FormSubscribeComponent } from './form-subscribe/form-subscribe.component';
 import { PlusMinusComponent } from './plus-minus/plus-minus.component';
-import { Page404Component } from './page404/page404.component';
+import { Page404Component } from './mainComponents/page404/page404.component';
 
 
 const arr: Routes = [
