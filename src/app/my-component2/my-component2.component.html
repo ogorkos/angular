@@ -1,6 +1,10 @@
-<p>my-component works!2222222</p>
-{{name}}
+<!-- <p>my-component2 works!</p> -->
 
+
+<div class="d-flex wrap">
+  <img *ngIf="url1" src="{{url1}}" class="rounded mx-auto d-block " alt="">
+  <img [src]="url2" class="rounded mx-auto d-block " alt="">
+</div>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -11,12 +15,11 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let name of names;let i = index">
-          <app-table-row
+      <tr app-table-row *ngFor="let name of names;let i = index"          
           (onNewDelItem)="deleteItem($event)"
           [index]="i"
           [name]="name" 
-          [lastName]="localLastName"></app-table-row>
+          [lastName]="localLastName">
       </tr>
       
 

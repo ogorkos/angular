@@ -28,10 +28,25 @@ export class Subscribe {
     }
 
     get firstName():string {
-        return this._firstName.toUpperCase()
-    }
+        return this._firstName.toUpperCase()}
+    set firstName(val){
+        this.firstName=val}
+        
+    get email():string {
+        return this._email}
+    set email(val){
+        this.email=val}
 
-
+    get lastName():string {
+        return this.lastName}
+    set lastName(val){
+        this.lastName=val}
+    
+    get address():string {
+        return this._id}
+    set address(val){
+        this.address=val}
+        
     }
 
 

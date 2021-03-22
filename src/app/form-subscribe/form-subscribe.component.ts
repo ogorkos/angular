@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import {Subscribe} from '../classes/subscribe'
 
 @Component({
@@ -6,20 +6,40 @@ import {Subscribe} from '../classes/subscribe'
   templateUrl: './form-subscribe.component.html',
   styleUrls: ['./form-subscribe.component.css']
 })
-export class FormSubscribeComponent implements OnInit {
+export class FormSubscribeComponent implements OnInit,AfterViewInit {
 
-  constructor() { }
+  ngAfterViewInit():void{}
+
+  result:any
+
+  form={
+    firstName:'',
+    email:'',
+    lastName:'',
+    address:''
+  }
+
+  // @Input() test='';
+
   user:Subscribe
 
+  constructor() { }
+  
+  // @ViewChild('email') emailField:ElementRef
+
   ngOnInit(): void {
-    console.log(this.user)
+    
+    // this.email.nativeElement.value='test'
   }
  
 
+
   onSave(email:string,firstName:string,lastName:string,address:string){
-      console.log(new Subscribe(email,firstName,lastName,address))
       this.user=new Subscribe(email,firstName,lastName,address);
-      console.log(this.user.firstName)
+      console.log(this.user)
+      this.result=Object.keys(this.user)
+      .map((key) => [key.slice(1) + ' : ' + this.user[key]])
+      console.log(this.result);      
   }
 
 }

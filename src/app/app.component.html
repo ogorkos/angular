@@ -1,6 +1,26 @@
+<!-- <app-nav-bar 
+(selectedItem)="selectedMenu($event)"
+></app-nav-bar> -->
+<!-- <button (click)="menu=1">1</button>
+<button (click)="menu=2">2</button>
+<button (click)="menu=3">3</button>
+<button (click)="menu=4">4</button> -->
+
+<!-- <div class="container">
+  <app-my-component *ngIf="menu==1" ></app-my-component>
+  <app-my-component2 *ngIf="menu==2"></app-my-component2>
+  <app-form *ngIf="menu==3"></app-form>
+  <app-form-subscribe *ngIf="menu==4" [ngStyle]="{color: 'blue'}"></app-form-subscribe>
+  <div *ngIf="menu==5">
+    <app-setcolor></app-setcolor>
+    <app-show-color></app-show-color>
+
+  </div>
+  <app-plus-minus *ngIf="menu==6"></app-plus-minus>
+</div> -->
+
+<app-nav-bar></app-nav-bar>
+
 <div class="container">
-  <!-- <app-my-component></app-my-component> -->
-  <app-my-component2></app-my-component2>
-  <!-- <app-form></app-form> -->
-  <!-- <app-form-subscribe></app-form-subscribe> -->
+  <router-outlet></router-outlet>
 </div>

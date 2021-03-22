@@ -1,0 +1,34 @@
+<h1>Plus / Minus</h1>
+<div class="btn-group" role="group" aria-label="Basic example">
+<app-btn-plus-min
+   [Plus]=false
+   [simvol]='titleMinus'
+   [number]='number'
+   (newnumber)='printNumber($event)'>
+</app-btn-plus-min>
+
+<a name="" id="" class="btn btn-link" role="button" style="cursor: auto;">
+   {{number}}</a>
+   
+ <app-btn-plus-min
+ [Plus]=true
+ [simvol]='titlePlus'
+ [number]='number'
+ (newnumber)='printNumber($event)'>
+</app-btn-plus-min>
+</div>
+<br><br><br>
+<h1 *ngIf="number>0">
+   I want to get $ {{number}}000 
+</h1>
+<h1 *ngIf="number<0">
+   You owe me $ {{-number}}000 
+</h1>
+<br><br><br><br><br>
+
+<button (click)="number=0" type="button" class="btn btn-warning">reset</button>
+
+
+<!-- <button (click)="minus(number)" type="button" class="btn btn-info">-</button> -->
+   <!-- <button (click)="plus(number)" type="button" class="btn btn-info">+</button>
+ </div> -->

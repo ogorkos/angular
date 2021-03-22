@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project01032021';
+
+  menu:number=1;
+
+  selectedMenu(item){
+    this.menu=item;
+  }
+
+
 }
