@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'project01032021';
+export class AppComponent implements OnInit{
+  title = 'companyCrm';
 
-  menu:number=1;
+  constructor(private ls:LoginService) { }
 
-  selectedMenu(item){
-    this.menu=item;
+  ngOnInit(): void {
+    this.ls.checkIfUserLogin()
   }
 
 

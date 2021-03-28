@@ -1,1 +1,71 @@
-<p>login works!</p>
+<!-- <form > 
+   <div class="form-group">
+     <label for="email">Email address:</label>
+     <input type="email" class="form-control" id="email" #email>
+   </div>
+   <div class="form-group">
+     <label for="pwd">Password:</label>
+     <input type="password" class="form-control" id="pwd" #password>
+   </div>
+   <div class="checkbox">
+     <label><input type="checkbox"> Remember me</label>
+   </div>
+   <button (click)="onSave(email.value,password)" type="button" class="btn btn-success">Save</button>
+ </form>
+
+<div class="m-5" *ngIf="login">
+   <h2>{{email.value}}, </h2>
+   <h2>thank you for registration </h2>
+</div> -->
+<section>
+<div class="d-flex justify-content-center h-100">
+  <div class="card">
+    <div class="card-header">
+      <h3>Sign In</h3>
+      <div class="d-flex justify-content-end social_icon">
+        <span><i class="fab fa-facebook-square"></i></span>
+        <span><i class="fab fa-google-plus-square"></i></span>
+        <span><i class="fab fa-twitter-square"></i></span>
+      </div>
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="input-group form-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input type="email" name="email" class="form-control" placeholder="email" #email [(ngModel)]="input.emailVal" [value]="input.emailVal">
+          
+        </div>
+        <div class="input-group form-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-key"></i></span>
+          </div>
+          <input type="password" name="password" class="form-control" placeholder="password" #password [(ngModel)]="input.passwordVal" [value]="input.passwordVal">
+        </div>
+        <div class="row align-items-center remember">
+          <input type="checkbox">Remember Me
+        </div>
+        <div class="form-group">
+          <button 
+          [disabled]='input.emailVal==="" || input.passwordVal===""'
+           (click)="loginFunc(email.value,password.value)" class="btn float-right login_btn">Login</button>
+          <!-- <button type="button" (click)="onSave(email.value,password)" value="Login" class="btn float-right login_btn"> -->
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+      <div class="d-flex justify-content-center links">
+        Don't have an account?<a href="#">Sign Up</a>
+      </div>
+      <div class="d-flex justify-content-center">
+        <a href="#">Forgot your password?</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="errorMessage" class="alert alert-danger" role='alert'>
+  <p>{{errorMessage}}</p>
+  <button (click)="closeAlert()" type="text" class="btn btn-primary" role="button">Ok</button>
+</div>
+</section>

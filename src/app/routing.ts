@@ -5,21 +5,28 @@ import { FormComponent } from './form/form.component';
 import { FormSubscribeComponent } from './form-subscribe/form-subscribe.component';
 import { PlusMinusComponent } from './plus-minus/plus-minus.component';
 import { Page404Component } from './mainComponents/page404/page404.component';
+import { IfUserLogin } from './guards/ifUserLogin';
+import { LoginComponent } from './mainComponents/login/login.component';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 
 
 const arr: Routes = [
 
-{path: '', redirectTo: '/home', pathMatch: 'full'},
+{path: '', redirectTo: '/login', pathMatch: 'full'},
 
 {path: 'home', component: MyComponentComponent},
 
-{path: 'table', component: MyComponent2},
+{path: 'login', component: LoginComponent},
+{path: 'dashboard', component: DashboardComponent},
 
-{path:'formReg', component:  FormComponent},
+{path: 'table', component: MyComponent2,canActivate: [IfUserLogin]},
 
-{path:'formSub', component: FormSubscribeComponent},
+{path:'formReg', component:  FormComponent,canActivate: [IfUserLogin]},
 
-{path: 'plusminus', component: PlusMinusComponent},
+{path:'formSub', component: FormSubscribeComponent,canActivate: [IfUserLogin]},
+
+{path: 'plusminus', component: PlusMinusComponent,canActivate: [IfUserLogin]},
+{path: 'plusminus/:number', component: PlusMinusComponent,canActivate: [IfUserLogin]},
 
 {path: '**', component: Page404Component}
 

@@ -1,5 +1,6 @@
+<div *ngIf="navBarStatus">
 <nav class="navbar navbar-expand-sm navbar-light bg-info">
-   <a class="navbar-brand" ><b> Home work </b></a>
+   <a class="navbar-brand" routerLink="/dashboard"><b> Home work </b></a>
    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
        aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,7 +40,14 @@
          <li class="nav-item ">
             <a class="nav-link" routerLink="/plusminus" routerLinkActive="active"  >+/-</a>
          </li>
+         <li class="nav-item ">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active"  >Login</a>
+         </li>
+         <li class="nav-item " style="position: absolute; right: 10px;">
+            <a class="nav-link" (click)="logOut()" >Sing Out</a>
+         </li>
       </ul>
       
    </div>
 </nav>
+</div>

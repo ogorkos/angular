@@ -9,7 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormComponent } from './form/form.component';
 import { FormSubscribeComponent } from './form-subscribe/form-subscribe.component';
 import { SelectColorComponent } from './select-color/select-color.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './mainComponents/nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SetcolorComponent } from './setcolor/setcolor.component';
@@ -18,6 +18,13 @@ import { PlusMinusComponent } from './plus-minus/plus-minus.component';
 import { BtnPlusMinComponent } from './plus-minus/btn-plus-min/btn-plus-min.component';
 import { Page404Component } from './mainComponents/page404/page404.component';
 import { LoginComponent } from './mainComponents/login/login.component';
+import { BtnNumbersComponent } from './plus-minus/btn-numbers/btn-numbers.component';
+import { IfUserLogin } from './guards/ifUserLogin';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule} from '@angular/fire/auth';
+import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -36,16 +43,21 @@ import { LoginComponent } from './mainComponents/login/login.component';
     BtnPlusMinComponent,
     Page404Component,
     LoginComponent,
+    BtnNumbersComponent,
+    DashboardComponent,
     
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
+    AngularFireAuthModule,
     routing,
+    AngularFireModule.initializeApp(environment.firebase),
     HttpClientModule    
   ],
-  providers: [],
+
+  providers: [IfUserLogin],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

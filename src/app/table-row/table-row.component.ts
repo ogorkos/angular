@@ -16,7 +16,7 @@ export class TableRowComponent implements OnInit {
  @Output() onNewDelItem=new EventEmitter<any>();
 
   ngOnInit(): void {
-    console.log(this.name)
+    // console.log(this.name)
   }
 
   delete(index:number):void{

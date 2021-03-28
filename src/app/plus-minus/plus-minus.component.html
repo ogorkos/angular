@@ -1,3 +1,4 @@
+<!-- <app-nav-bar></app-nav-bar> -->
 <h1>Plus / Minus</h1>
 <div class="btn-group" role="group" aria-label="Basic example">
 <app-btn-plus-min
@@ -21,13 +22,17 @@
 <h1 *ngIf="number>0">
    I want to get $ {{number}}000 
 </h1>
+<img *ngIf="bigNum" src="https://prikolist.club/wp-content/uploads/2019/11/dulya_4_10053830.png" alt="">
 <h1 *ngIf="number<0">
-   You owe me $ {{-number}}000 
+   You owe me $ {{-number}} 000 
 </h1>
-<br><br><br><br><br>
+<br><br>
+<app-btn-numbers *ngFor="let item of numbersExemples" 
+[numValue]=item
+></app-btn-numbers>
+<br><br>
 
-<button (click)="number=0" type="button" class="btn btn-warning">reset</button>
-
+<button (click)="setNumber(0)" type="button" class="btn btn-warning">reset</button>
 
 <!-- <button (click)="minus(number)" type="button" class="btn btn-info">-</button> -->
    <!-- <button (click)="plus(number)" type="button" class="btn btn-info">+</button>
