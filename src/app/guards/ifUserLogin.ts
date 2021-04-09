@@ -14,7 +14,7 @@ export class IfUserLogin implements CanActivate {
     if (this.loginServ.user){
       return true
     } else return false
-    // return true
+    // return this.loginServ.user
     // return false
   }
 }

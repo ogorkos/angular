@@ -10,7 +10,7 @@ import { FormComponent } from './form/form.component';
 import { FormSubscribeComponent } from './form-subscribe/form-subscribe.component';
 import { SelectColorComponent } from './select-color/select-color.component';
 import { NavBarComponent } from './mainComponents/nav-bar/nav-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SetcolorComponent } from './setcolor/setcolor.component';
 import { ShowColorComponent } from './show-color/show-color.component';
@@ -24,7 +24,8 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule} from '@angular/fire/auth';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
-
+import { NavBarSideComponent } from './mainComponents/nav-bar-side/nav-bar-side.component';
+import { ReactFormComponent } from './myTests/react-form/react-form.component';
 
 
 @NgModule({
@@ -45,12 +46,15 @@ import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
     LoginComponent,
     BtnNumbersComponent,
     DashboardComponent,
+    NavBarSideComponent,
+    ReactFormComponent,
     
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireAuthModule,
     routing,
     AngularFireModule.initializeApp(environment.firebase),

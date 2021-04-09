@@ -8,6 +8,7 @@ import { Page404Component } from './mainComponents/page404/page404.component';
 import { IfUserLogin } from './guards/ifUserLogin';
 import { LoginComponent } from './mainComponents/login/login.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { ReactFormComponent } from './myTests/react-form/react-form.component';
 
 
 const arr: Routes = [
@@ -17,7 +18,7 @@ const arr: Routes = [
 {path: 'home', component: MyComponentComponent},
 
 {path: 'login', component: LoginComponent},
-{path: 'dashboard', component: DashboardComponent},
+{path: 'dashboard', component: DashboardComponent,canActivate: [IfUserLogin]},
 
 {path: 'table', component: MyComponent2,canActivate: [IfUserLogin]},
 
@@ -27,6 +28,8 @@ const arr: Routes = [
 
 {path: 'plusminus', component: PlusMinusComponent,canActivate: [IfUserLogin]},
 {path: 'plusminus/:number', component: PlusMinusComponent,canActivate: [IfUserLogin]},
+
+{path: 'reactForm', component: ReactFormComponent},
 
 {path: '**', component: Page404Component}
 

@@ -14,6 +14,8 @@ export class NavBarComponent implements OnInit {
   @Output() selectedItem=new EventEmitter<any>();
 
   navBarStatus:boolean=true
+  userPhotoURL:any = null
+  userName:any = null
   
   constructor(
     private navServ:ShowNavBarService,
@@ -21,10 +23,18 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.navServ.data.subscribe((data)=>{
-      console.log('navBar =', data);
+      // console.log('navBar =', data);
       this.navBarStatus=data
+      if (this.ls.userPhotoURL){
+      this.userPhotoURL = this.ls.userPhotoURL;
+    }
+    if (this.ls.userName){
+      this.userName = this.ls.userName;
+    }
     })
   }
+
+  
 
   selected(item:number){
     this.selectedItem.emit(item)
@@ -32,7 +42,7 @@ export class NavBarComponent implements OnInit {
 
   logOut(){
     this.ls.logOut();
-    console.log("Sing Out");
+    // console.log("Sing Out");
     
   }
 }

@@ -1,0 +1,34 @@
+<form class="container mt-5"
+[formGroup]="myForm" 
+(ngSubmit)="onSubmit(myForm.value)">
+<div class="form-group">
+
+<label for="exampleInputEmail1">Email address</label>
+
+<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email" [formControl]="myForm.controls['email']">
+
+
+
+</div>
+<div class="form-group">
+
+<label for="exampleInputPassword1">Password</label>
+
+<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" [formControl]="myForm.controls['password']">
+
+</div>
+<div class="form-check">
+
+<input type="checkbox" class="form-check-input" id="exampleCheck1" name="exampleCheck" [formControl]="myForm.controls['checkbox']">
+
+<label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+</div>
+<small *ngIf="!myForm.controls['email'].valid &&  myForm.controls['email'].touched" id="emailHelp" class="form-text text-danger ">Please enter email</small>
+<small *ngIf="myForm.controls['email'].hasError('required') &&  myForm.controls['email'].touched" id="emailHelp" class="form-text text-danger ">This input required</small>
+<small *ngIf="myForm.controls['password'].hasError('required') &&  myForm.controls['password'].touched" id="emailHelp" class="form-text text-danger ">Password required</small>
+<small *ngIf="myForm.controls['password'].hasError('minlength') &&  myForm.controls['password'].touched" id="emailHelp" class="form-text text-danger ">Password must be at least 6</small>
+<small *ngIf="myForm.controls['password'].hasError('moreThen10') &&  myForm.controls['password'].touched" id="emailHelp" class="form-text text-danger ">More then 10</small>
+<button [disabled]="!myForm.valid" type="submit" class="btn btn-primary">Submit</button>
+
+</form>

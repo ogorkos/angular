@@ -1,3 +1,5 @@
+<!-- -----------First version with #name_Field -->
+
 <!-- <form > 
    <div class="form-group">
      <label for="email">Email address:</label>
@@ -17,41 +19,70 @@
    <h2>{{email.value}}, </h2>
    <h2>thank you for registration </h2>
 </div> -->
+
+
+<!-- -----------Second version with formGroup and formControl -->
 <section>
 <div class="d-flex justify-content-center h-100">
   <div class="card">
     <div class="card-header">
       <h3>Sign In</h3>
       <div class="d-flex justify-content-end social_icon">
-        <span><i class="fab fa-facebook-square"></i></span>
-        <span><i class="fab fa-google-plus-square"></i></span>
-        <span><i class="fab fa-twitter-square"></i></span>
+        <span><i (click)="loginFacebook()" class="fab fa-facebook-square"></i></span>
+        <span ><i (click)="loginGoogle()" class="fab fa-google-plus-square"></i></span>
+        <span><i (click)="loginTwitter()" class="fab fa-twitter-square"></i></span>
       </div>
     </div>
     <div class="card-body">
-      <form>
+      <div class="text-center">
+        <button 
+        *ngIf="showBtnGotoDashboard" 
+        (click)="goto()" class="btn goto">Go to dashboard</button>
+      </div>
+      <form  
+      [formGroup]="userForm" 
+      (ngSubmit)="onSubmit(userForm.value)">
         <div class="input-group form-group">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user"></i></span>
           </div>
-          <input type="email" name="email" class="form-control" placeholder="email" #email [(ngModel)]="input.emailVal" [value]="input.emailVal">
-          
+          <input type="email" name="email" class="form-control" placeholder="Email" [formControl]="userForm.controls['email']">
+          <!-- <input type="email" name="email" class="form-control" placeholder="email" (keyup.enter)='loginFunc(email.value,password.value)' #email [(ngModel)]="input.emailVal" [value]="input.emailVal"> -->
         </div>
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)"
+    class="alert alert-danger">
+
+  <div *ngIf="name.errors.required">
+    Name is required.
+  </div>
+  <div *ngIf="name.errors.minlength">
+    Name must be at least 4 characters long.
+  </div> -->
         <div class="input-group form-group">
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-key"></i></span>
           </div>
-          <input type="password" name="password" class="form-control" placeholder="password" #password [(ngModel)]="input.passwordVal" [value]="input.passwordVal">
+          <input type="password" name="password" class="form-control" placeholder="password" [formControl]="userForm.controls['password']">
+          <!-- <input type="password" name="password" class="form-control" placeholder="password" (keyup.enter)='loginFunc(email.value,password.value)' #password [(ngModel)]="input.passwordVal" [value]="input.passwordVal"> -->
         </div>
         <div class="row align-items-center remember">
           <input type="checkbox">Remember Me
         </div>
         <div class="form-group">
-          <button 
+          
+            <button 
+            type="submit"
+            [disabled]="!userForm.valid"
+              class="btn float-right login_btn">Login</button>
+
+
+           <!-- <button 
           [disabled]='input.emailVal==="" || input.passwordVal===""'
-           (click)="loginFunc(email.value,password.value)" class="btn float-right login_btn">Login</button>
+           (click)="loginFunc(email.value,password.value)" class="btn float-right login_btn">Login</button> -->
+
           <!-- <button type="button" (click)="onSave(email.value,password)" value="Login" class="btn float-right login_btn"> -->
-        </div>
+          </div>
+          
       </form>
     </div>
     <div class="card-footer">
@@ -64,7 +95,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="errorMessage" class="alert alert-danger" role='alert'>
+<div *ngIf="errorMessage" class="alert alert-danger" style="z-index: 100;" role='alert'>
   <p>{{errorMessage}}</p>
   <button (click)="closeAlert()" type="text" class="btn btn-primary" role="button">Ok</button>
 </div>

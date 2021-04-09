@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShowNavBarService } from 'src/app/services/show-nav-bar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(private navServ:ShowNavBarService) { }
 
   ngOnInit(): void {
+    // this.navServ.hideNavBar()    // чтобы отключить навигацию
   }
+
+  // ngOnDestroy(): void {
+  //   this.navServ.showNavBar()    // чтобы включить навигацию
+  // }
 
 }
