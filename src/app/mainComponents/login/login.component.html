@@ -39,6 +39,8 @@
         *ngIf="showBtnGotoDashboard" 
         (click)="goto()" class="btn goto">Go to dashboard</button>
       </div>
+      
+      
       <form  
       [formGroup]="userForm" 
       (ngSubmit)="onSubmit(userForm.value)">
@@ -46,9 +48,14 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-user"></i></span>
           </div>
-          <input type="email" name="email" class="form-control" placeholder="Email" [formControl]="userForm.controls['email']">
+          <input type="email" name="email" class="form-control" placeholder="Email" [formControl]="userForm.controls['email']"  (keyup.enter)='onSubmit(userForm.value)' >
+          
+          
+          
           <!-- <input type="email" name="email" class="form-control" placeholder="email" (keyup.enter)='loginFunc(email.value,password.value)' #email [(ngModel)]="input.emailVal" [value]="input.emailVal"> -->
         </div>
+        <small *ngIf="!userForm.controls['email'].valid &&  userForm.controls['email'].touched" id="emailHelp" class="form-text text-danger ">Please enter email</small>
+        <small *ngIf="userForm.controls['email'].hasError('required') &&  userForm.controls['email'].touched" id="emailHelp" class="form-text text-danger ">This input required</small>
         <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)"
     class="alert alert-danger">
 
@@ -62,9 +69,12 @@
           <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-key"></i></span>
           </div>
-          <input type="password" name="password" class="form-control" placeholder="password" [formControl]="userForm.controls['password']">
+          <input type="password" name="password" class="form-control" placeholder="password" [formControl]="userForm.controls['password']" (keyup.enter)='onSubmit(userForm.value)'>
+
           <!-- <input type="password" name="password" class="form-control" placeholder="password" (keyup.enter)='loginFunc(email.value,password.value)' #password [(ngModel)]="input.passwordVal" [value]="input.passwordVal"> -->
         </div>
+        <small *ngIf="userForm.controls['password'].hasError('required') &&  userForm.controls['password'].touched" id="emailHelp" class="form-text text-danger ">Password required</small>
+        <small *ngIf="userForm.controls['password'].hasError('minlength') &&  userForm.controls['password'].touched" id="emailHelp" class="form-text text-danger ">Password must be at least 6</small>
         <div class="row align-items-center remember">
           <input type="checkbox">Remember Me
         </div>
