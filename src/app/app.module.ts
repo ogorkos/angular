@@ -26,7 +26,10 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { NavBarSideComponent } from './mainComponents/nav-bar-side/nav-bar-side.component';
 import { ReactFormComponent } from './myTests/react-form/react-form.component';
-
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { TestFirestoreComponent } from './myTests/test-firestore/test-firestore.component';
+import { SetDataFirebaseComponent } from './dashboard/set-data-firebase/set-data-firebase.component';
+import { GetDataFirebaseComponent } from './dashboard/get-data-firebase/get-data-firebase.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { ReactFormComponent } from './myTests/react-form/react-form.component';
     DashboardComponent,
     NavBarSideComponent,
     ReactFormComponent,
+    TestFirestoreComponent,
+    SetDataFirebaseComponent,
+    GetDataFirebaseComponent,
     
   ],
   imports: [
@@ -56,8 +62,9 @@ import { ReactFormComponent } from './myTests/react-form/react-form.component';
     FormsModule,
     ReactiveFormsModule,
     AngularFireAuthModule,
-    routing,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
+    routing,
     HttpClientModule    
   ],
 

@@ -5,11 +5,21 @@ a{
    margin-bottom: 20px;
 }
 li{
-   margin-right: 10px;
+   margin-right: 4px;
+}
+li:hover{
+   background-color: yellow;
+   border-radius: 4px;
 }
 .userImg{
    width: 50px;
    height: 50px;
    border-radius: 50%;
    background-color: #fff;
+}
+a{
+   font-size: 14px;
+}
+i{
+   color: rgb(45, 45, 112);
 }

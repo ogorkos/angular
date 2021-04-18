@@ -1,0 +1,39 @@
+<!-- <router-outlet></router-outlet> -->
+<div class="container">
+   <h2>Get clients from Firestore</h2>
+   <div class="btn-group" role="group" aria-label="Basic example">
+       
+       <button (click)="getDataFromFirebase()" type="button" class="btn btn-info mb-3">Get clients</button>
+       
+     </div>
+    <table *ngIf="clients" class="table table-striped tborder">
+        <thead >
+          <tr class="thead">
+            <th scope="col">#</th>
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+          </tr>
+        </thead>
+        <tbody>           
+          <tr *ngFor="let client of clients;let i = index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{client.firstName}}</td>
+            <td>{{client.lastName}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.phone}}</td>
+            <td>{{client.address}}</td>
+            <td>{{client.notes}}</td>            
+            <td><button (click)="delete(client.id)"><i class="fas fa-user-times"></i></button></td>            
+            <td><button (click)="edit(client.id)"><i class="fas fa-user-edit"></i></button></td> 
+          </tr>
+          
+    
+        </tbody>
+      </table>
+</div>

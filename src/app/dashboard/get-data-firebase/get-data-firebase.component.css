@@ -1,0 +1,33 @@
+.thead{
+   background-color: rgb(253, 252, 194);
+   border-bottom: 2px solid rgb(80, 80, 80);
+}
+.tborder{
+   border: 2px solid rgb(80, 80, 80);
+   box-shadow: 3px 3px 3px rgb(78, 78, 78);
+}
+th{
+   font-size: 14px;
+}
+td{
+   font-size: 12px;
+}
+th, td {
+   padding: 6px;
+   vertical-align: middle;
+}
+th {
+   font-size: 12px;
+}
+button{
+   border: 2px solid rgb(104, 104, 104);
+   box-shadow: 2px 2px 2px rgb(112, 112, 112);
+   border-radius: 4px;
+}
+button:hover{
+   background-color: yellow;
+   color: black;
+}
+i{
+   padding: 4px;   
+}

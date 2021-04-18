@@ -1,0 +1,72 @@
+<h2 class="m-3">Set clients to Firestore</h2>
+<form 
+[formGroup]="myForm" 
+(ngSubmit)="onSubmit(myForm.value)">
+   <div class="form-row">
+
+     <div class="col-md-4 mb-3">
+       <label for="inputFirstName">First name</label>
+       <input type="text" class="form-control" id="inputFirstName" placeholder="First name" [value]="client.firstName" required
+       [formControl]="myForm.controls['firstName']"
+       [ngClass]="{'is-invalid': !myForm.controls['firstName'].valid &&  myForm.controls['firstName'].touched, 
+       'is-valid': myForm.controls['firstName'].valid}">
+       <div class="invalid-feedback">
+            Please enter a First name.
+       </div>
+     </div>
+
+     <div class="col-md-4 mb-3">
+       <label for="inputLastName">Last name</label>
+       <input type="text" class="form-control" id="inputLastName" placeholder="Last name" [value]="client.lastName" required
+       [formControl]="myForm.controls['lastName']"
+       [ngClass]="{'is-invalid': !myForm.controls['lastName'].valid &&  myForm.controls['lastName'].touched, 
+       'is-valid': myForm.controls['lastName'].valid}">
+       <div class="invalid-feedback">
+            Please enter a Last name.
+       </div>
+     </div>
+
+     <div class="col-md-4 mb-2">
+       <label for="inputEmail">Email</label>
+       <div class="input-group">
+         <input type="text" class="form-control" id="inputEmail" placeholder="Email" [value]="client.email" required 
+         [formControl]="myForm.controls['email']"
+         [ngClass]="{'is-invalid': !myForm.controls['email'].valid &&  myForm.controls['email'].touched, 
+         'is-valid': myForm.controls['email'].valid}">  
+         <div class="invalid-feedback">
+               Please enter a Email.
+         </div>
+       </div>
+     </div>
+   </div>
+
+   <div class="form-row">      
+      <div class="col-md-3 mb-3">
+        <label for="inputPhone">Phone</label>
+        <input type="text" class="form-control " id="inputPhone" placeholder="" required [value]="client.phone"
+        [formControl]="myForm.controls['phone']"
+        [ngClass]="{'is-invalid': !myForm.controls['phone'].valid &&  myForm.controls['phone'].touched, 
+        'is-valid': myForm.controls['phone'].valid}">
+        <div class="invalid-feedback">
+            Please enter Phone. Min length 10
+        </div>
+      </div>
+      <div class="col-md-9 mb-3">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control " id="inputAddress" placeholder="" required [value]="client.address"
+        [formControl]="myForm.controls['address']"
+        [ngClass]="{'is-invalid': !myForm.controls['address'].valid &&  myForm.controls['address'].touched, 
+        'is-valid': myForm.controls['address'].valid}">
+        <div class="invalid-feedback">
+            Please provide a valid Address.
+        </div>
+      </div>    
+   </div>   
+   <div class="form-row mb-3">      
+      <label for="inputNotes">Notes</label>
+      <textarea type="text" class="form-control" name="Notes" rows="6" class="form-control" id="inputNotes" placeholder="" [value]="client.notes"
+      [formControl]="myForm.controls['notes']"
+      ></textarea>
+   </div>   
+   <button [disabled]="!myForm.valid"  class="btn btn-info" type="submit">Ok</button>
+ </form>

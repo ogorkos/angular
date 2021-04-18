@@ -60,24 +60,22 @@ export class LoginComponent implements OnInit, OnDestroy {
   //   }
   // }
   
-  loginFunc(email:string, password:string){
-    this.loginServ.loginWithEmailPassword(email, password).catch((err)=>{
+  async loginFunc(email:string, password:string){
+    await this.loginServ.loginWithEmailPassword(email, password).catch((err)=>{
       if (email==="" || password===""){
-        console.log(true);
-        
-      console.log("email = ", email)
-      console.log("password = ", password)
+        // console.log(true);        
+      // console.log("email = ", email)
+      // console.log("password = ", password)
     }
       else{console.log("have email and password");
-      }
-      
+      }      
       this.errorMessage=err
     })
   }
 
-  onSubmit(form){
+  async onSubmit(form){
     console.warn(this.userForm);
-    this.loginServ.loginWithEmailPassword(this.userForm.value.email, this.userForm.value.password).catch((err)=>{
+    await this.loginServ.loginWithEmailPassword(this.userForm.value.email, this.userForm.value.password).catch((err)=>{
       console.log(err);      
       this.errorMessage=err
     })
@@ -87,18 +85,18 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.errorMessage = "";
   }
 
-  loginGoogle(){
+  async loginGoogle(){
     console.log("loginGoogle");
-    this.loginServ.loginWithGoogle();    
+    await this.loginServ.loginWithGoogle();    
   }
 
-  loginFacebook(){
+  async loginFacebook(){
     console.log("loginFacebook");
-    this.loginServ.doFacebookLogin();    
+    await this.loginServ.doFacebookLogin();    
   }
-  loginTwitter(){
+  async loginTwitter(){
     console.log("loginTwitter");
-    this.loginServ.doTwitterLogin();    
+    await this.loginServ.doTwitterLogin();    
   }
 
 

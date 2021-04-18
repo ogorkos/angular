@@ -2,21 +2,47 @@
 <!-- <div id="wrapper"> -->
 
   <!-- <app-side-bar></app-side-bar> -->
+  <!-- <div id="content-wrapper" class="d-flex flex-column"> -->
 
-   <!-- <div id="content-wrapper" class="d-flex flex-column"> -->
   
+    <!-- <app-nav-bar-side></app-nav-bar-side> -->
 
-      
-    <!-- <div class="container-fluid"> -->
-      <div class="wrapper d-flex align-items-stretch">
-      <app-nav-bar-side></app-nav-bar-side>
-      <div id="content" class="p-4 p-md-5 pt-5">
-        <h2 class="mb-4">Sidebar #09</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="content">
+      <div class="container">
+      <!-- <div class="container-fluid"> -->
+        <h1>This is Dashboard</h1>
+        <router-outlet></router-outlet>
       </div>
-		</div>
-    <!-- </div> -->
+    
+      <!-- <form >
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="name" id="name" class="form-control" #name>
+        </div>
+        <div class="form-group">
+          <label for="pwd">Email:</label>
+          <input type="email" class="form-control" id="email" #email>
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button (click)="sendData(name.value,email.value)" type="button" class="btn btn-success m-3">Save</button>
+      </form>
+      <button (click)="getDataFromFireStore()" type="button" class="btn btn-success m-3">Get Data From Firestore</button>
+      
+      <div class="printDataFtomFireStore">
+        <ul *ngFor="let items of dataFromFireStore">
+          <li *ngFor="let item of items">
+            <span *ngFor="let item2 of item">{{item2}}</span>
+          </li>
+        </ul>
+      </div>
+  </div> -->
+
+
+
+
+  
   
         
   

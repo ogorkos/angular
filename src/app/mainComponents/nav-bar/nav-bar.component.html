@@ -1,7 +1,7 @@
 <div *ngIf="navBarStatus">
-<nav class="navbar navbar-expand-sm navbar-light bg-info">
-   <a class="navbar-brand" routerLink="/dashboard"><b> Hello<span *ngIf="userName">,</span> {{userName}} </b></a>
-   <img *ngIf="userPhotoURL" class="userImg" [src]="userPhotoURL" alt="">            
+<nav class="navbar navbar-expand-sm navbar-light bg-info ">
+   <a class="navbar-brand " routerLink="/dashboard"><b> Dashboard<span *ngIf="userName">,</span> {{userName}} </b></a>
+   <img *ngIf="userPhotoURL" class="userImg mr-2" [src]="userPhotoURL" alt="">            
    <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
        aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -27,26 +27,32 @@
             <a class="nav-link" (click)="selected(6)"  >+/-</a>
          </li> -->
          <li class="nav-item ">
+            <a class="nav-link" routerLink="/dashboard/setData" routerLinkActive="active"  ><i class="fas fa-user-plus"> Add clients</i> <span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item ">
+            <a class="nav-link" routerLink="/dashboard/getData" routerLinkActive="active"  ><i class="fas fa-users"> Get clients</i> <span class="sr-only">(current)</span></a>
+         </li>
+         <!-- <li class="nav-item ">
             <a class="nav-link" routerLink="/home" routerLinkActive="active"  >List posts <span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
+         </li> -->
+         <!-- <li class="nav-item ">
             <a class="nav-link" routerLink="/table" routerLinkActive="active" >Table & images<span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
+         </li> -->
+         <!-- <li class="nav-item ">
             <a class="nav-link" routerLink="/formReg" routerLinkActive="active" >Form registration<span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
+         </li> -->
+         <!-- <li class="nav-item ">
             <a class="nav-link" routerLink="/formSub" routerLinkActive="active"  >Form with ngmodel</a>
-         </li>
-         <li class="nav-item ">
+         </li> -->
+         <!-- <li class="nav-item ">
             <a class="nav-link" routerLink="/plusminus" routerLinkActive="active"  >+/-</a>
-         </li>
+         </li> -->
          <li class="nav-item ">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active"  >Login</a>
+            <a class="nav-link" routerLink="/login" routerLinkActive="active"  ><i class="fas fa-sign-in-alt"> Login</i></a>
          </li>
          
-         <li class="nav-item " style="position: absolute; right: 10px;">
-            <a class="nav-link" (click)="logOut()" >Sing Out</a>            
+         <li class="nav-item " >
+            <a class="nav-link" (click)="logOut()" > <i class="fas fa-sign-out-alt"> Logout </i></a>            
          </li>
       </ul>
       

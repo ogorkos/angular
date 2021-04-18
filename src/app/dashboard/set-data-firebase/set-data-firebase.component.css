@@ -1,0 +1,10 @@
+form{
+   font-size: small;
+}
+input, textarea{
+font-size: 12px;
+}
+label{
+   font-size: 12px;
+   font-weight: 600;
+}
