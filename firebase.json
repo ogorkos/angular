@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist\\project01032021",
+    "public": "dist/project01032021",
     
     "rewrites": [ {
       "source": "**",

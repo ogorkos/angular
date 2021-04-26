@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import firebase from 'firebase/app';//for google auth
-// import { Observable, of } from 'rxjs';
+// import { Observable} from 'rxjs';
 // import { User } from './user.model'
 // import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore'
 
@@ -38,25 +38,26 @@ export class LoginService {
     })
 }
 
-checkIfUserLogin(){
-  return new Promise(async (resolve, reject) => {
+async checkIfUserLogin(){
+  // return new Promise(async (resolve, reject) => {
     if (this.user) {
-      resolve(true)
+      // resolve(true)
       console.log(this.user);      
-      return
+      return 
     }  
-    this.auth.onAuthStateChanged((user) =>{
+    await this.auth.onAuthStateChanged((user) =>{
       if (user) { 
-        // console.log(user);      
         this.user=user;
-        resolve(true)   
+        // resolve(true)   
+        return true
       }
       else { 
         this.user=null 
         this.router.navigate(['login'],{relativeTo: this.route });       
-        resolve(false) 
+        // resolve(false) 
+        return false
       }
-    })
+    // })
   }) 
 }
 
@@ -66,22 +67,27 @@ logOut(){
   this.auth.signOut();
 }
 
-loginWithGoogle() {
-  return new Promise<any>((resolve, reject) => {
+async loginWithGoogle() {
+  // return new Promise<any>((resolve, reject) => {
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
-    this.auth
+    await this.auth
     .signInWithPopup(provider)
     .then(res => {
       console.log(res);  
       this.user=res;
       this.userPhotoURL = this.user.user.photoURL;
       this.userName = this.user.user.displayName;
-      resolve(res);
+      // resolve(res); 
       this.router.navigate(['dashboard'],{relativeTo: this.route }); 
+      return res
+    }).then(data => {
+      this.userPhotoURL = data.user.photoURL;
+      console.log(this.userPhotoURL);
+      
     })
-  })
+  // })
 }
 
 

@@ -30,6 +30,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { TestFirestoreComponent } from './myTests/test-firestore/test-firestore.component';
 import { SetDataFirebaseComponent } from './dashboard/set-data-firebase/set-data-firebase.component';
 import { GetDataFirebaseComponent } from './dashboard/get-data-firebase/get-data-firebase.component';
+import { NavBar2Component } from './mainComponents/nav-bar2/nav-bar2.component';
+import { SpinnerComponent } from './mainComponents/spinner/spinner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +59,9 @@ import { GetDataFirebaseComponent } from './dashboard/get-data-firebase/get-data
     TestFirestoreComponent,
     SetDataFirebaseComponent,
     GetDataFirebaseComponent,
+    NavBar2Component,
+    SpinnerComponent,
+    SearchPipe,
     
   ],
   imports: [
@@ -65,7 +73,10 @@ import { GetDataFirebaseComponent } from './dashboard/get-data-firebase/get-data
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     routing,
-    HttpClientModule    
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,  
+      
   ],
 
   providers: [IfUserLogin],

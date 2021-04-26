@@ -16,6 +16,7 @@ export class NavBarComponent implements OnInit {
   navBarStatus:boolean=true
   userPhotoURL:any = null
   userName:any = null
+  showNavBar:boolean=false;
   
   constructor(
     private navServ:ShowNavBarService,
@@ -33,7 +34,9 @@ export class NavBarComponent implements OnInit {
     }
     })
   }
-
+  showNavBarFunc(){
+    this.showNavBar = !this.showNavBar;    
+  }
   
 
   selected(item:number){

@@ -26,5 +26,10 @@ export class BtnPlusMinComponent implements OnInit {
     this.newnumber.emit(this.number)
   }
 
-  
+  // newNumber(){
+  //   if (this.Plus) {this.number = this.pm.setNewValue(this.number+1)}
+  //   else {this.pm.setNewValue(this.number-1)}
+  //   // this.newnumber.emit(this.number)
+  // }
+
 }

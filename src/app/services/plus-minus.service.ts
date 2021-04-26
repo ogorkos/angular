@@ -9,6 +9,7 @@ export class PlusMinusService {
   number:number=0;
   status:boolean=false
   pmStatus = new BehaviorSubject<number>(this.number)
+  
 
   constructor() { }
 
@@ -26,5 +27,11 @@ export class PlusMinusService {
 
   setNum(val){
     this.number = val;
+  }
+
+  setNewValue(val:number){
+    
+      this.pmStatus.next(val)
+    
   }
 }

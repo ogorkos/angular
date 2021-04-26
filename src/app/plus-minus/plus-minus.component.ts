@@ -25,7 +25,7 @@ export class PlusMinusComponent implements OnInit {
 
   ngOnInit(): void {
        
-    //считываем параметры из ссылки:
+    //считываем параметры из ссылки URL:
     this._Activatedroute.params.subscribe(parameter => {
       if  (parameter.number ){
         this.number = +parameter.number

@@ -1,3 +1,11 @@
+
+<app-spinner *ngIf="showSpinner" class="spinner"></app-spinner>
+<app-nav-bar></app-nav-bar>
+<router-outlet></router-outlet>
+
+
+
+
 <!-- <app-nav-bar 
 (selectedItem)="selectedMenu($event)"
 ></app-nav-bar> -->
@@ -19,13 +27,15 @@
   <app-plus-minus *ngIf="menu==6"></app-plus-minus>
 </div> -->
 
-<app-nav-bar></app-nav-bar>
 
 <!-- <div class="container" *ngIf="disableContainer"> -->
   <!-- <p>container</p> -->
   <!-- <router-outlet></router-outlet> -->
-<!-- </div> -->
+  <!-- </div> -->
   <!-- <div class="container-fluid" *ngIf="!disableContainer"> -->
     <!-- <p>container-fluid</p> -->
-  <router-outlet></router-outlet>
-<!-- </div> -->
+    <!-- <router-outlet></router-outlet> -->
+    <!-- </div> -->
+
+
+    

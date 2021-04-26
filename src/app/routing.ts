@@ -32,20 +32,20 @@ const arr: Routes = [
          {
             path: 'setData', 
             component: SetDataFirebaseComponent,
-            // children: [
-            //    {
-            //       path: 'fs', 
-            //       component: TestFirestoreComponent,
-            //    },
-            //    {
-            //       path: 'table',
-            //       component: MyComponent2,
-            //    },
-            // ],
+            children: [
+               {
+                  path: 'fs', 
+                  component: TestFirestoreComponent,
+               },
+               {
+                  path: 'table',
+                  component: MyComponent2,
+               },
+            ],
          },
          {
             path: 'setData/:id',
-            component: GetDataFirebaseComponent,
+            component: SetDataFirebaseComponent,
          },
          {
             path: 'getData',

@@ -16,7 +16,6 @@ export class SetDataFirebaseComponent implements OnInit {
   myForm: FormGroup; 
   client:Client = new Client;
   idForEdit:string ;
-  touched:any;
   edit:boolean = false
   
   constructor(
@@ -50,39 +49,38 @@ export class SetDataFirebaseComponent implements OnInit {
       ]],
       'notes': ['',[  ]],
       })
-      // this.touched = this.myForm.controls['firstName'].touched;
-      // this.touched = this.myForm.controls['lastName'].touched;
-      // this.touched = this.myForm.controls['address'].touched;
-      // this.touched = this.myForm.controls['address'].touched;
-      // this.touched = this.myForm.controls['address'].touched;
+      
   }
 
   ngOnInit(): void {
     //считываем параметры из ссылки:    
     //http://localhost:4200/dashboard/setData?id=1
+    
     this.route.queryParams.subscribe(params => {
-        console.log(params);
-        this.getDataFromFirebase(params.collection, params.id)
-        this.edit = true  
-        this.idForEdit = params.id
+        console.log("params = ",params);
+        if (params.collection && params.id){
+          this.getDataFromFirebase(params.collection, params.id)
+          this.edit = true  
+          this.idForEdit = params.id 
+        } 
       }); 
+
+      //считываем параметры из ссылки в виде:    
+      // http://localhost:4200/dashboard/setData/1315
+      // this._Activatedroute.params.subscribe(parameter => {
+      //   console.log("parameter = ",parameter);        
+      // }) 
   }
 
   onSubmit(form:any){
-    // console.log(this.myForm)
     console.log("form");    
-    console.log(form);    
     if (this.edit) {
       this.fss.updateDataToFirebase(form, "clients", this.idForEdit)
       this.edit = false
-      console.log(1);
       this.router.navigate(['dashboard/getData']);        
-    } else
-    {
-      this.fss.addClient(form)   
-    }
-    this.myForm.reset()
-    
+    } 
+    else    {this.fss.addClient(form)}
+    this.myForm.reset()    
   }
 
   async getDataFromFirebase(collection:string, id:string){

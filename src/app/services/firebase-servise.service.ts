@@ -1,3 +1,4 @@
+import { BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
 import { Client } from '../models/client';
@@ -6,6 +7,9 @@ import { Client } from '../models/client';
   providedIn: 'root'
 })
 export class FirebaseServiseService {
+
+  client: Client[] = [];
+  clientsStatus = new BehaviorSubject<Client>(new Client);
 
   constructor(private db:AngularFirestore) { }
 
@@ -46,7 +50,8 @@ export class FirebaseServiseService {
 
   deleteDataFromFirestore(collection:string, id:string){
     return new Promise<any>((resolve, reject) => {
-      this.db.collection(collection).doc(id).delete().then(() => {
+      this.db.collection(collection).doc(id).delete()
+      .then(() => {
         console.log("Document successfully deleted!");
         resolve(this.getDataFromFirebase(collection))
     }).catch((error) => {
@@ -55,7 +60,7 @@ export class FirebaseServiseService {
     })
   }
   
- 
+ //нужно переписать так как у нас есть данные по этому клиенту
   getDataWithId(collection:string, id:string){
     return new Promise<any>((resolve, reject) => {
       const alovelaceDocumentRef = this.db.firestore.collection(collection).doc(id);
@@ -85,5 +90,7 @@ export class FirebaseServiseService {
 
     })
   }   
+
+
 
 }

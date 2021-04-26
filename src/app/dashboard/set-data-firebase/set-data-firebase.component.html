@@ -68,5 +68,7 @@
       [formControl]="myForm.controls['notes']"
       ></textarea>
    </div>   
-   <button [disabled]="!myForm.valid"  class="btn btn-info" type="submit">Ok</button>
+   <button [disabled]="!myForm.valid"  class="btn btn-info pr-4 pl-4" type="submit">Ok</button>
  </form>
+
+ <router-outlet></router-outlet>

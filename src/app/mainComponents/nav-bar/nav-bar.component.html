@@ -1,61 +1,28 @@
 <div *ngIf="navBarStatus">
-<nav class="navbar navbar-expand-sm navbar-light bg-info ">
-   <a class="navbar-brand " routerLink="/dashboard"><b> Dashboard<span *ngIf="userName">,</span> {{userName}} </b></a>
-   <img *ngIf="userPhotoURL" class="userImg mr-2" [src]="userPhotoURL" alt="">            
-   <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-       aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-         <!-- <li class="nav-item ">
-            <a class="nav-link" (click)="selected(1)" >List posts <span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" (click)="selected(2)" >Table & images<span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" (click)="selected(3)" >Form registration<span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" (click)="selected(4)"  >Form with ngmodel</a>
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" (click)="selected(5)"  >Set color</a>
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" (click)="selected(6)"  >+/-</a>
-         </li> -->
-         <li class="nav-item ">
-            <a class="nav-link" routerLink="/dashboard/setData" routerLinkActive="active"  ><i class="fas fa-user-plus"> Add clients</i> <span class="sr-only">(current)</span></a>
-         </li>
-         <li class="nav-item ">
-            <a class="nav-link" routerLink="/dashboard/getData" routerLinkActive="active"  ><i class="fas fa-users"> Get clients</i> <span class="sr-only">(current)</span></a>
-         </li>
-         <!-- <li class="nav-item ">
-            <a class="nav-link" routerLink="/home" routerLinkActive="active"  >List posts <span class="sr-only">(current)</span></a>
-         </li> -->
-         <!-- <li class="nav-item ">
-            <a class="nav-link" routerLink="/table" routerLinkActive="active" >Table & images<span class="sr-only">(current)</span></a>
-         </li> -->
-         <!-- <li class="nav-item ">
-            <a class="nav-link" routerLink="/formReg" routerLinkActive="active" >Form registration<span class="sr-only">(current)</span></a>
-         </li> -->
-         <!-- <li class="nav-item ">
-            <a class="nav-link" routerLink="/formSub" routerLinkActive="active"  >Form with ngmodel</a>
-         </li> -->
-         <!-- <li class="nav-item ">
-            <a class="nav-link" routerLink="/plusminus" routerLinkActive="active"  >+/-</a>
-         </li> -->
-         <li class="nav-item ">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active"  ><i class="fas fa-sign-in-alt"> Login</i></a>
-         </li>
+
+   <nav class="navbar navbar-expand-sm navbar-light bg-info">
+      <a class="navbar-brand" routerLink="/dashboard"><b> Dashboard<span *ngIf="userName">,</span> {{userName}} </b></a>
+      <img *ngIf="userPhotoURL" class="userImg mr-2" [src]="userPhotoURL">     
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation" (click)="showNavBarFunc()">
+      <span class="navbar-toggler-icon"></span>     
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll" [ngClass]="{show: showNavBar}" >
+      <ul class="navbar-nav mr-auto my-2 my-lg-0 " >
          
+         <li class="nav-item ">
+            <a class="nav-link" routerLink="/dashboard/setData" routerLinkActive="active"  ><i class="fas fa-user-plus mr-2"> </i> <span>Add clients</span></a>
+         </li>  
+
+         <li class="nav-item ">
+            <a class="nav-link" routerLink="/dashboard/getData" routerLinkActive="active"  ><i class="fas fa-users mr-2"> </i> <span >Get clients</span></a>
+         </li>   
+
          <li class="nav-item " >
-            <a class="nav-link" (click)="logOut()" > <i class="fas fa-sign-out-alt"> Logout </i></a>            
+            <a class="nav-link" (click)="logOut()" > <i class="fas fa-sign-out-alt mr-2"></i><span>Logout</span> </a>            
          </li>
-      </ul>
-      
-   </div>
-</nav>
+
+      </ul>     
+      </div>
+   </nav>
+
 </div>
