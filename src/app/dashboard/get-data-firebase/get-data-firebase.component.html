@@ -38,6 +38,7 @@
             <th scope="col">LastName</th>
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
+            <th scope="col">Created</th>
             <!-- <th scope="col">Address</th> -->
             <!-- <th scope="col">Notes</th> -->
             <th scope="col">Delete</th>
@@ -53,6 +54,7 @@
             <td>{{client.lastName}}</td>
             <td><i class="fas fa-at border-icon"></i> {{client.email}}</td>
             <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
+            <td>{{client.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
             <td><button class="myborder" (click)="delete(client.id)"><i class="fas fa-user-times"></i></button></td>            
             <td><button class="myborder" (click)="edit(client.id)"><i class="fas fa-user-edit"></i></button></td> 
           </tr>

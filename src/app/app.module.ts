@@ -35,6 +35,7 @@ import { SpinnerComponent } from './mainComponents/spinner/spinner.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { SearchPipe } from './search.pipe';
+import { TimeStampToDatePipe } from './pipes/time-stamp-to-date.pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { SearchPipe } from './search.pipe';
     NavBar2Component,
     SpinnerComponent,
     SearchPipe,
+    TimeStampToDatePipe,
     
   ],
   imports: [

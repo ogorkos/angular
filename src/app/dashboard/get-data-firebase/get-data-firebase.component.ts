@@ -26,13 +26,23 @@ export class GetDataFirebaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getDataFromFirebase();
+    // this.getDataFromFirebase();
+  }
+
+  ngAfterContentInit(): void {
+    this.getDataFromFirebase()
   }
 
   async getDataFromFirebase(){
     this.spinServ.showSpinnerFunc(true)
-    this.clients = await this.fss.getDataFromFirebase("clients");
+    await this.fss.getDataFromFirebase("clients");
     this.spinServ.showSpinnerFunc(false)
+    this.fss.clientsStatus.subscribe((arr:Client[])=>{
+      this.clients = arr
+      // this.customersArrayData=arr
+      // this.searchChanged('')
+    })
+    
 }
 
   async delete(id:string){
