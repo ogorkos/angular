@@ -6,6 +6,7 @@ export class Client {
   address: string = '';
   notes: string = '';
   private _id: string = '';
+  private _userId: string = '';
   private timestamp: number
   // =new Date().getTime()
 
@@ -23,6 +24,7 @@ export class Client {
       address: this.address,
       notes: this.notes,
       id: this._id,
+      userId:this._userId,
       timestamp: this.timestamp
     };
   }
@@ -35,6 +37,7 @@ export class Client {
     phone: string = '',
     address: string = '',
     notes: string = '',
+    userId:string = '',
     timestamp: number = new Date().getTime()
   ) {
     this.id = id;
@@ -44,6 +47,7 @@ export class Client {
     this.phone = phone;
     this.address = address;
     this.notes = notes;
+    this.userId = userId;
     this.timestamp = timestamp;
   }
 
@@ -66,5 +70,13 @@ export class Client {
 
   set id(val: string) {
     this._id = val;
+  }
+
+  get userId(): string {
+    return this._id;
+  }
+
+  set userId(val: string) {
+    this._userId = val;
   }
 }

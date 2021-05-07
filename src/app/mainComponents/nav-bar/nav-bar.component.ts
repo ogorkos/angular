@@ -26,12 +26,14 @@ export class NavBarComponent implements OnInit {
     this.navServ.data.subscribe((data)=>{
       // console.log('navBar =', data);
       this.navBarStatus=data
-      if (this.ls.userPhotoURL){
-      this.userPhotoURL = this.ls.userPhotoURL;
-    }
-    if (this.ls.userName){
-      this.userName = this.ls.userName;
-    }
+      if (this.ls.user){
+        if (this.ls.user.user.photoURL){
+            this.userPhotoURL = this.ls.user.user.photoURL;
+          }
+          if (this.ls.user.user.displayName){
+            this.userName = this.ls.user.user.displayName;
+          }
+      }
     })
   }
   showNavBarFunc(){

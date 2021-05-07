@@ -1,10 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Client } from './models/client';
+import { Client } from '../models/client';
+
 
 @Pipe({
-  name: 'searchClientPipe'
+  name: 'searchClientInArrPipe'
 })
-export class SearchPipe implements PipeTransform {
+export class SearchInArrPipe implements PipeTransform {
 
   transform(clients: Client[], searchValue: string): Client[] {
     if (!searchValue) return clients;
@@ -14,5 +15,6 @@ export class SearchPipe implements PipeTransform {
     || client.email.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
     || client.phone.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1)
   }
+
 
 }

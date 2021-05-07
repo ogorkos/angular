@@ -14,7 +14,6 @@ export class GetDataFirebaseComponent implements OnInit {
   clients:Client[]=[]
   searchArr:Client[] = []
   searchTerm:string
-  // @ViewChild('search') search:ElementRef;
 
   constructor(
     private fss:FirebaseServiseService,
@@ -39,25 +38,29 @@ export class GetDataFirebaseComponent implements OnInit {
     this.spinServ.showSpinnerFunc(false)
     this.fss.clientsStatus.subscribe((arr:Client[])=>{
       this.clients = arr
-      // this.customersArrayData=arr
-      // this.searchChanged('')
     })
-    
-}
+    }
 
   async delete(id:string){
     this.spinServ.showSpinnerFunc(true)
     this.clients = await this.fss.deleteDataFromFirestore("clients", id);    
+    setTimeout(() => {
+      this.getDataFromFirebase();
+    }, 1000);
     if (this.searchArr.length>0){
       this.searchArr = [];
       // this.search.nativeElement.value=""
     }
-    this.spinServ.showSpinnerFunc(false)
-}
+        this.spinServ.showSpinnerFunc(false)
+    }
 
-  async edit(id:string){         
-    this.router.navigate(['dashboard/setData'], { queryParams: { id: id, collection: "clients" } });        
-}
+  editOrShowClient(id:string, editOrShow:string){         
+    this.router.navigate(['dashboard/setData'], { queryParams: { id: id, collection: "clients" , editOrShow: editOrShow} });        
+  }
+
+  // showClient(clientId:string){
+  //   this.router.navigate([clientId],{ relativeTo: this.route });
+  // }
 
 // searchChanged(str:string){
   // str=str.toLowerCase()

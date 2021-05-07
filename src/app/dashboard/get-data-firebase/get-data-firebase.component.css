@@ -20,6 +20,7 @@ tr:hover{
 th, td {
    padding: 6px;
    vertical-align: middle;
+   cursor: pointer;
 }
 th {
    font-size: 12px;

@@ -48,7 +48,7 @@
 
         
         <tbody>                    
-          <tr  *ngFor="let client of (clients | searchClientPipe:searchTerm) ;let i = index">          
+          <tr  *ngFor="let client of (clients | searchClientInArrPipe:searchTerm) ;let i = index" (click)="editOrShowClient(client.id,'show')" >          
             <th scope="row">{{i+1}}</th>
             <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
             <td>{{client.lastName}}</td>
@@ -56,7 +56,7 @@
             <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
             <td>{{client.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
             <td><button class="myborder" (click)="delete(client.id)"><i class="fas fa-user-times"></i></button></td>            
-            <td><button class="myborder" (click)="edit(client.id)"><i class="fas fa-user-edit"></i></button></td> 
+            <td><button class="myborder" (click)="editOrShowClient(client.id, 'edit')"><i class="fas fa-user-edit"></i></button></td> 
           </tr>
         </tbody>        
 
@@ -128,3 +128,11 @@
     <option [ngValue]="6">6 items per page</option>
   </select>
 </div> -->
+
+
+<!-- <ul>
+  <li *ngFor="let item of list">
+    <p>{{item}}</p>
+    <p *ngFor="let item2 of item">{{item2 }}</p>
+  </li>
+</ul> -->

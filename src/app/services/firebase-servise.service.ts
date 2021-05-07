@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { BehaviorSubject } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
@@ -10,11 +11,13 @@ export class FirebaseServiseService {
   clients: Client[] = [];
   clientsStatus = new BehaviorSubject<Client[]>([]);
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private ls:LoginService) {}
 
   addClient(client: Client) {
+    console.log(client);    
     const docRef = this.db.firestore.collection('clients').doc();
     client.id = docRef.id;
+    client.userId = this.ls.user.user.uid;
     console.log(client.toFirestore());
     docRef
       .set(client.toFirestore(), { merge: true })
@@ -30,14 +33,18 @@ export class FirebaseServiseService {
   getDataFromFirebase(collection: string, refresh:boolean=false) {
     if (refresh){
       return new Promise<Client[]>( (resolve, reject) => {
-        this.db.firestore.collection(collection).onSnapshot((querySnapshot) => {
+        this.db.firestore.collection(collection)
+        // .where("userId", "==", this.ls.user.user.uid)
+        .onSnapshot((querySnapshot) => {
           this.clients=[]
           querySnapshot.forEach((doc) => {
             this.clients.push(new Client().fromFirestore(doc));           
-          });
+            console.log(this.clients);
+          });    
+                  
           this.clientsStatus.next(this.clients)
+          resolve(this.clients)  
         });
-        resolve(this.clients)  
       })        
     }
 
@@ -49,39 +56,24 @@ export class FirebaseServiseService {
         return
       }
       
-      this.db.firestore.collection(collection).onSnapshot((querySnapshot) => {
+      this.db.firestore.collection(collection)
+      // .where("userId", "==", this.ls.user.user.uid)
+      .onSnapshot((querySnapshot) => {
         this.clients=[]
-        console.log(this.clients);
         
         querySnapshot.forEach((doc) => {
           this.clients.push(new Client().fromFirestore(doc));
-       
+          
         });
+        console.log(this.clients);
+        
+        
         this.clientsStatus.next(this.clients)
         resolve(true)
 
     });
 })
-
-    // return new Promise<any>((resolve, reject) => {
-    //   const data = [];
-    //   this.db.firestore
-    //     .collection(collection)
-    //     // .where("state", "==", "CA").where("population", "<", 1000000)
-    //     .get()
-    //     .then((querySnapshot) => {
-    //       querySnapshot.forEach((doc) => {
-    //         // doc.data() is never undefined for query doc snapshots
-    //         console.log(doc.data());            
-    //         data.push(doc.data());
-    //       });
-    //       resolve(data);
-    //     })
-    //     .catch((error) => {
-    //       console.log('Error getting documents: ', error);
-    //     });
-    // });
-  }
+}
 
   deleteDataFromFirestore(collection: string, id: string) {
     return new Promise<any>((resolve, reject) => {

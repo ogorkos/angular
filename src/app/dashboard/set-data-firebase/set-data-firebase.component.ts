@@ -19,6 +19,9 @@ export class SetDataFirebaseComponent implements OnInit {
   client: Client = new Client();
   idForEdit: string;
   edit: boolean = false;
+  show: boolean = false;
+  private sub: any;
+  readonly: boolean = false;
 
   constructor(
     fb: FormBuilder,
@@ -38,37 +41,86 @@ export class SetDataFirebaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sub = this.route.params.subscribe(params => {     
+      if (params['id']){
+        // this.id = params['id'];
+        this.getCustomer(params['id'])
+      }  
+   });
+
     //считываем параметры из ссылки:
     //http://localhost:4200/dashboard/setData?id=1
 
     this.route.queryParams.subscribe((params) => {
       console.log('params = ', params);
       if (params.collection && params.id) {
-        this.getDataFromFirebase(params.collection, params.id);
-        this.edit = true;
+        this.getCustomer(params.id)
+        // this.getDataFromFirebase(params.collection, params.id);
+        if (params.editOrShow ==="edit") {          
+          this.edit = true;
+        } else {
+          this.show = true ;
+          this.myForm.disable()
+          this.readonly = true;
+        }
         this.idForEdit = params.id;
       }
     });
 
-    //считываем параметры из ссылки в виде:
+    // считываем параметры из ссылки в виде:
     // http://localhost:4200/dashboard/setData/1315
     // this._Activatedroute.params.subscribe(parameter => {
     //   console.log("parameter = ",parameter);
     // })
   }
 
+  async getCustomer(id: string){
+    try {
+      // this.spinnerService.showOrHideSpinner(true)
+      const client = await  this.fss.getDataWithId('clients',id)
+      console.log("Клиент для редакт");      
+      console.log(client);
+      this.fillClientInInput(client)
+      
+      // this.spinnerService.showOrHideSpinner(false)
+      if (client){
+        this.client = client
+        // this.addOrEditCustomer="Edit customer"
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  fillClientInInput(client:Client){
+    this.myForm.patchValue({
+      firstName:client.firstName,
+      lastName: client.lastName,
+      email: client.email, 
+      phone: client.phone, 
+      address: client.address,
+      notes: client.notes,
+    })
+    console.log(this.myForm);
+    
+  }
+
   onSubmit(form: any) {
     form = new Client().fromObjectToClient(form);
     
     console.log('form');
+    if (this.show) {
+      this.show = false;
+      this.router.navigate(['dashboard/getData']);
+    }
     if (this.edit) {
       this.fss.updateDataToFirebase(form, 'clients', this.idForEdit);
       this.edit = false;
       this.router.navigate(['dashboard/getData']);
     } else {
       this.fss.addClient(form);
+      this.myForm.reset();
     }
-    this.myForm.reset();
   }
 
   async getDataFromFirebase(collection: string, id: string) {

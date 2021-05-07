@@ -60,6 +60,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   //   }
   // }
   
+
+  // No usage
   async loginFunc(email:string, password:string){
     await this.loginServ.loginWithEmailPassword(email, password).catch((err)=>{
       if (email==="" || password===""){
@@ -96,7 +98,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   async loginTwitter(){
     console.log("loginTwitter");
-    await this.loginServ.doTwitterLogin();    
+    await this.loginServ.doTwitterLogin();  
+    //no usage userImage, userId, userPhoto  
   }
 
 

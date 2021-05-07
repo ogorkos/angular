@@ -9,7 +9,8 @@ export class SelectColorComponent implements OnInit {
 
   color:string="red"
   fontSize:number
-
+  bgc:string="black"
+  
   apply
 
   constructor() { }

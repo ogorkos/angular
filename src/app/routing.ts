@@ -12,6 +12,7 @@ import { ReactFormComponent } from './myTests/react-form/react-form.component';
 import { TestFirestoreComponent } from './myTests/test-firestore/test-firestore.component';
 import { GetDataFirebaseComponent } from './dashboard/get-data-firebase/get-data-firebase.component';
 import { SetDataFirebaseComponent } from './dashboard/set-data-firebase/set-data-firebase.component';
+import { SelectColorComponent } from './select-color/select-color.component';
 
 
 const arr: Routes = [
@@ -64,6 +65,7 @@ const arr: Routes = [
 {path: 'plusminus', component: PlusMinusComponent,canActivate: [IfUserLogin]},
 {path: 'plusminus/:number', component: PlusMinusComponent,canActivate: [IfUserLogin]},
 
+{path:'color', component: SelectColorComponent,canActivate: [IfUserLogin]},
 
 {path: '**', component: Page404Component}
 

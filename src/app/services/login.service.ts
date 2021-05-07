@@ -20,11 +20,10 @@ export class LoginService {
     ) { }
 
   user:any=null;
-  userPhotoURL:any = null;
-  userName:any = null;
+  // userPhotoURL:any = null;
+  // userName:any = null;
 
   loginWithEmailPassword(email:string, password:string){
-    // console.log(email, password);
     return new Promise(async(resolve, reject) =>{
       this.auth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
@@ -62,13 +61,13 @@ async checkIfUserLogin(){
 }
 
 logOut(){
-  this.userPhotoURL = null;
-  this.userName = null;
+  // this.userPhotoURL = null;
+  // this.userName = null;
   this.auth.signOut();
 }
 
 async loginWithGoogle() {
-  // return new Promise<any>((resolve, reject) => {
+  
     let provider = new firebase.auth.GoogleAuthProvider();
     provider.addScope('profile');
     provider.addScope('email');
@@ -77,17 +76,11 @@ async loginWithGoogle() {
     .then(res => {
       console.log(res);  
       this.user=res;
-      this.userPhotoURL = this.user.user.photoURL;
-      this.userName = this.user.user.displayName;
-      // resolve(res); 
+      // this.userPhotoURL = this.user.user.photoURL;
+      // this.userName = this.user.user.displayName;
       this.router.navigate(['dashboard'],{relativeTo: this.route }); 
       return res
-    }).then(data => {
-      this.userPhotoURL = data.user.photoURL;
-      console.log(this.userPhotoURL);
-      
     })
-  // })
 }
 
 
@@ -98,12 +91,9 @@ doFacebookLogin(){
     .signInWithPopup(provider)
     .then(res => {
       resolve(res);      
-      console.log("USER");
-      this.userPhotoURL = this.user.photoURL;
-      this.userName = this.user.displayName;
-
-      this.prntUser()
-      // console.log(this.user);
+      // this.userPhotoURL = this.user.photoURL;
+      // this.userName = this.user.displayName;
+      this.prntUser()      
       this.router.navigate(['dashboard'],{relativeTo: this.route });       
     }, err => {
       console.log(err);
@@ -130,11 +120,10 @@ doTwitterLogin(){
 
 prntUser(){
   // new Promise<any>((resolve, reject) => {
-// this.user.uid = res.user.uid;
       // this.user.displayName = res.user.displayName;
       // this.user.email = res.user.email;
       console.log(this.user);
-      console.log(this.user.photoURL);
+      // console.log(this.user.photoURL);
       // this.user.photoURL = this.user.photoURL;
     // })
     }
