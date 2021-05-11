@@ -38,7 +38,8 @@ export class Client {
     address: string = '',
     notes: string = '',
     userId:string = '',
-    timestamp: number = new Date().getTime()
+    timestamp: number = 0
+    // new Date().getTime()
   ) {
     this.id = id;
     this.firstName = firstName;
@@ -51,9 +52,7 @@ export class Client {
     this.timestamp = timestamp;
   }
 
-  fromFirestore(doc): Client {   
-    console.log("fromFirestore(doc)",doc.data());
-    
+  fromFirestore(doc): Client {     
     return new Client(
       doc.id,
       doc.data().firstName,
@@ -62,6 +61,7 @@ export class Client {
       doc.data().phone,
       doc.data().address,
       doc.data().notes,
+      doc.data().userId,
       doc.data().timestamp ? doc.data().timestamp : new Date().getTime()
     );
   }
@@ -81,4 +81,5 @@ export class Client {
   set userId(val: string) {
     this._userId = val;
   }
+
 }

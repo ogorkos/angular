@@ -14,7 +14,7 @@ td{
 }
 tr:hover{
    /* transform: translateY(1px); */
-   font-weight: 500;
+   color: #178492;
    /* cursor: pointer; */
 }
 th, td {

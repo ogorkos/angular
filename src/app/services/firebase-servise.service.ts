@@ -37,13 +37,9 @@ export class FirebaseServiseService {
         // .where("userId", "==", this.ls.user.user.uid)
         .onSnapshot((querySnapshot) => {
           this.clients=[]
-          querySnapshot.forEach((doc) => {
-            console.log('doc = ',doc);
-            
+          querySnapshot.forEach((doc) => {            
             this.clients.push(new Client().fromFirestore(doc));           
-            console.log(this.clients);
-          });    
-                  
+          });                      
           this.clientsStatus.next(this.clients)
           resolve(this.clients)  
         },(error) => {
