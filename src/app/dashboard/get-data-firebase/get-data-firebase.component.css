@@ -12,7 +12,7 @@ th{
 td{
    font-size: 12px;
 }
-tr:hover{
+.trBody:hover{
    /* transform: translateY(1px); */
    color: #178492;
    /* cursor: pointer; */

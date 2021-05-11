@@ -30,7 +30,7 @@
 
       
       <tbody>                    
-        <tr  *ngFor="let client of (clients | searchClientInArrPipe:searchTerm) ;let i = index" (click)="editOrShowClient($event, client.id,'show')" >          
+        <tr class="trBody" *ngFor="let client of (clients | searchClientInArrPipe:searchTerm) ;let i = index" (click)="editOrShowClient($event, client.id,'show')" >          
           <th scope="row">{{i+1}}</th>
           <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
           <td>{{client.lastName}}</td>
