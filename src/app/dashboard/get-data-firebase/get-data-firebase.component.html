@@ -1,23 +1,6 @@
-<div class="container">
-   <h2>Get clients from Firestore</h2>
-   <div class="btn-group" role="group" aria-label="Basic example">
-       
-       <!-- <button (click)="getDataFromFirebase()" type="button" class="btn btn-info mb-3">Get clients</button> -->
-       
-       
-<!-- ******* First version -->
-
-       <!-- <div class="input-group mb-2">
-        <input (input)="searchChanged($event.target.value)" type="text" class="form-control bg-light border small shadow" #search placeholder="Search for..."
-            aria-label="Search" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-            <button class="btn btn-info" type="button">
-                <i class="fas fa-search fa-sm" style="color:white"></i>
-            </button>
-        </div>
-    </div> -->
-
-<!-- ******* /First version -->
+<div class="container ">
+  <h2>Get clients from Firestore</h2>
+  <div class="btn-group" role="group" aria-label="Basic example">
        
     <div class="input-group mb-2">
       <input  type="text" class="form-control bg-light border small shadow"  [(ngModel)]="searchTerm" placeholder="Search for..."
@@ -27,112 +10,45 @@
               <i class="fas fa-search fa-sm" style="color:white"></i>
           </button>
       </div>
+    </div>
+
   </div>
 
-     </div>
-    <table *ngIf="clients" class="table table-striped tborder">
-        <thead >
-          <tr class="thead">
-            <th scope="col">#</th>
-            <th scope="col">FirstName</th>
-            <th scope="col">LastName</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Created</th>
-            <!-- <th scope="col">Address</th> -->
-            <!-- <th scope="col">Notes</th> -->
-            <th scope="col">Delete</th>
-            <th scope="col">Edit</th>
-          </tr>
-        </thead>
+    <table *ngIf="clients" class="table table-striped tborder mb-3">
+      <thead >
+        <tr class="thead">
+          <th scope="col">#</th>
+          <th scope="col">FirstName</th>
+          <th scope="col">LastName</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Created</th>
+          <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
+        </tr>
+      </thead>
 
-        
-        <tbody>                    
-          <tr  *ngFor="let client of (clients | searchClientInArrPipe:searchTerm) ;let i = index" (click)="editOrShowClient(client.id,'show')" >          
-            <th scope="row">{{i+1}}</th>
-            <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
-            <td>{{client.lastName}}</td>
-            <td><i class="fas fa-at border-icon"></i> {{client.email}}</td>
-            <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
-            <td>{{client.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
-            <td><button class="myborder" (click)="delete(client.id)"><i class="fas fa-user-times"></i></button></td>            
-            <td><button class="myborder" (click)="editOrShowClient(client.id, 'edit')"><i class="fas fa-user-edit"></i></button></td> 
-          </tr>
-        </tbody>        
+      
+      <tbody>                    
+        <tr  *ngFor="let client of (clients | searchClientInArrPipe:searchTerm) ;let i = index" (click)="editOrShowClient($event, client.id,'show')" >          
+          <th scope="row">{{i+1}}</th>
+          <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
+          <td>{{client.lastName}}</td>
+          <td><i class="fas fa-at border-icon"></i> {{client.email}}</td>
+          <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
+          <td>{{client.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
+          <td><button class="myborder" (click)="openVerticallyCentered(content)" (click)="confirmDelete($event,client.id)"><i class="fas fa-user-times"></i></button></td>            
+          <td><button class="myborder" (click)="editOrShowClient($event,client.id, 'edit')"><i class="fas fa-user-edit"></i></button></td> 
+        </tr>
+      </tbody>        
+    </table>
 
-
-<!-- ******* First version -->
-
-        <!-- <tbody *ngIf="searchArr.length==0">                    
-          <tr  *ngFor="let client of clients;let i = index">          
-            <th scope="row">{{i+1}}</th>
-            <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
-            <td>{{client.lastName}}</td>
-            <td><i class="fas fa-at border-icon"></i> {{client.email}}</td>
-            <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
-            <td><button (click)="delete(client.id)"><i class="fas fa-user-times"></i></button></td>            
-            <td><button (click)="edit(client.id)"><i class="fas fa-user-edit"></i></button></td> 
-          </tr>
-        </tbody> -->
-
-        <!-- <tbody *ngIf="searchArr.length>0">                   
-            <tr  *ngFor="let client of searchArr;let i = index">          
-              <th scope="row">{{i+1}}</th>
-              <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
-              <td>{{client.lastName}}</td>
-              <td><i class="fas fa-at border-icon"></i> {{client.email}}</td>
-              <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
-              <td><button (click)="delete(client.id)"><i class="fas fa-user-times"></i></button></td>            
-              <td><button (click)="edit(client.id)"><i class="fas fa-user-edit"></i></button></td> 
-            </tr>
-        </tbody>
-      </table>
-</div> -->
-
-<!-- ******* /First version -->
-
-
-
-<!-- 
-<p>You can bind our <code>NgbPagination</code> component with slicing the data list</p>
-
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Country</th>
-    <th scope="col">Area</th>
-    <th scope="col">Population</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let country of countries">
-    <th scope="row">{{ country.id }}</th>
-    <td>
-      <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
-      {{ country.name }}
-    </td>
-    <td>{{ country.area | number}}</td>
-    <td>{{ country.population | number }}</td>
-  </tr>
-  </tbody>
-</table>
-
-<div class="d-flex justify-content-between p-2">
-  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
-  </ngb-pagination>
-
-  <select class="custom-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshCountries()">
-    <option [ngValue]="2">2 items per page</option>
-    <option [ngValue]="4">4 items per page</option>
-    <option [ngValue]="6">6 items per page</option>
-  </select>
-</div> -->
-
-
-<!-- <ul>
-  <li *ngFor="let item of list">
-    <p>{{item}}</p>
-    <p *ngFor="let item2 of item">{{item2 }}</p>
-  </li>
-</ul> -->
+    <ng-template #content let-modal style="width:300px" class="modalWin">
+      <div class="modal-body">
+        <p>Are you sure you want to delete?</p>
+      </div>
+      <div class="modal-footer d-flex justify-content-around">
+        <button type="button" class="btn btn-info" (click)="delete()" (click)="modal.close('Close click')">Detele</button>
+        <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Canсel</button>
+      </div>
+    </ng-template>

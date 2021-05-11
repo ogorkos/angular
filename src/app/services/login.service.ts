@@ -27,7 +27,7 @@ export class LoginService {
     return new Promise(async(resolve, reject) =>{
       this.auth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        this.router.navigate(['dashboard'], { relativeTo: this.route });
+        this.router.navigate(['dashboard/getData'], { relativeTo: this.route });
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -78,7 +78,7 @@ async loginWithGoogle() {
       this.user=res;
       // this.userPhotoURL = this.user.user.photoURL;
       // this.userName = this.user.user.displayName;
-      this.router.navigate(['dashboard'],{relativeTo: this.route }); 
+      this.router.navigate(['dashboard/getData'],{relativeTo: this.route }); 
       return res
     })
 }
@@ -94,7 +94,7 @@ doFacebookLogin(){
       // this.userPhotoURL = this.user.photoURL;
       // this.userName = this.user.displayName;
       this.prntUser()      
-      this.router.navigate(['dashboard'],{relativeTo: this.route });       
+      this.router.navigate(['dashboard/getData'],{relativeTo: this.route });       
     }, err => {
       console.log(err);
       reject(err);
@@ -110,7 +110,7 @@ doTwitterLogin(){
     .signInWithPopup(provider)
     .then(res => {
       resolve(res);
-      this.router.navigate(['dashboard'],{relativeTo: this.route }); 
+      this.router.navigate(['dashboard/getData'],{relativeTo: this.route }); 
     }, err => {
       console.log(err);
       reject(err);
@@ -129,7 +129,7 @@ prntUser(){
     }
     
 goto(){
-  this.router.navigate(['dashboard'],{relativeTo: this.route }); 
+  this.router.navigate(['dashboard/getData'],{relativeTo: this.route }); 
 }
 
 

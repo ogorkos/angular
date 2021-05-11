@@ -33,36 +33,36 @@ export class DashboardComponent implements OnInit {
   // }
 
 
-  sendData(nameVal, emailVal){
-    console.log(nameVal, emailVal);
+  // sendData(nameVal, emailVal){
+  //   console.log(nameVal, emailVal);
     
-    this.firestore.collection("users").add({
-      name: nameVal,
-      email: emailVal
-    })
-    .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-  }
+  //   this.firestore.collection("users").add({
+  //     name: nameVal,
+  //     email: emailVal
+  //   })
+  //   .then((docRef) => {
+  //       console.log("Document written with ID: ", docRef.id);
+  //   })
+  //   .catch((error) => {
+  //       console.error("Error adding document: ", error);
+  //   });
+  // }
 
-  getDataFromFireStore(){
-    this.firestore.firestore.collection("users").get().then((querySnapshot) => {
-      this.dataFromFireStore = [];
-      querySnapshot.forEach((doc) => {
-          console.log(`${doc.id}`);
-          console.log(doc.data());
+  // getDataFromFireStore(){
+  //   this.firestore.firestore.collection("users").get().then((querySnapshot) => {
+  //     this.dataFromFireStore = [];
+  //     querySnapshot.forEach((doc) => {
+  //         console.log(`${doc.id}`);
+  //         console.log(doc.data());
 
-          const obj = Object.keys(doc.data()).map((key) => [key+" : ", doc.data()[key]])
-          console.log(obj);
+  //         const obj = Object.keys(doc.data()).map((key) => [key+" : ", doc.data()[key]])
+  //         console.log(obj);
           
-          this.dataFromFireStore.push(obj)          
-        });
-        console.log(this.dataFromFireStore);
+  //         this.dataFromFireStore.push(obj)          
+  //       });
+  //       console.log(this.dataFromFireStore);
         
-      })
-  }
+  //     })
+  // }
 
 }

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import {Subscribe} from '../classes/subscribe'
+import {Subscribe} from '../../classes/subscribe'
 
 @Component({
   selector: 'app-form-subscribe',

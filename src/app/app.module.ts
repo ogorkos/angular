@@ -2,18 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { routing } from './routing';
-import { MyComponentComponent } from './my-component/my-component.component';
-import { MyComponent2 } from './my-component2/my-component2.component';
-import { TableRowComponent } from './table-row/table-row.component';
+import { MyComponentComponent } from './myTests/my-component/my-component.component';
+import { MyComponent2 } from './myTests/my-component2/my-component2.component';
+import { TableRowComponent } from './myTests/table-row/table-row.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormComponent } from './form/form.component';
-import { FormSubscribeComponent } from './form-subscribe/form-subscribe.component';
-import { SelectColorComponent } from './select-color/select-color.component';
+import { FormComponent } from './myTests/form/form.component';
+import { FormSubscribeComponent } from './myTests/form-subscribe/form-subscribe.component';
+import { SelectColorComponent } from './myTests/select-color/select-color.component';
 import { NavBarComponent } from './mainComponents/nav-bar/nav-bar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SetcolorComponent } from './setcolor/setcolor.component';
-import { ShowColorComponent } from './show-color/show-color.component';
+import { SetcolorComponent } from './myTests/setcolor/setcolor.component';
+import { ShowColorComponent } from './myTests/show-color/show-color.component';
 import { PlusMinusComponent } from './plus-minus/plus-minus.component';
 import { BtnPlusMinComponent } from './plus-minus/btn-plus-min/btn-plus-min.component';
 import { Page404Component } from './mainComponents/page404/page404.component';
@@ -36,6 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { TimeStampToDatePipe } from './pipes/time-stamp-to-date.pipe';
 import { SearchInArrPipe } from './pipes/search-in-arr.pipe';
+import { AddContactsComponent } from './dashboard/add-contacts/add-contacts.component';
+import { ViewContactsComponent } from './dashboard/view-contacts/view-contacts.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { SearchInArrPipe } from './pipes/search-in-arr.pipe';
     SpinnerComponent,
     TimeStampToDatePipe,
     SearchInArrPipe,
+    AddContactsComponent,
+    ViewContactsComponent,
     
   ],
   imports: [

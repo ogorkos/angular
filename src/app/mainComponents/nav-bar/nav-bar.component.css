@@ -7,7 +7,7 @@ a{
 li{
    margin-right: 4px;
 }
-li:hover{
+li:hover, .logout:hover{
    background-color: yellow;
    border-radius: 4px;
 }

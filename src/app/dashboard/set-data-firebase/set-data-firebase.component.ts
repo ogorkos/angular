@@ -20,7 +20,6 @@ export class SetDataFirebaseComponent implements OnInit {
   idForEdit: string;
   edit: boolean = false;
   show: boolean = false;
-  private sub: any;
   readonly: boolean = false;
 
   constructor(
@@ -41,12 +40,8 @@ export class SetDataFirebaseComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => {     
-      if (params['id']){
-        // this.id = params['id'];
-        this.getCustomer(params['id'])
-      }  
-   });
+    this.route.params.subscribe(params => {     
+      if (params['id']){ this.getCustomer(params['id'])} });
 
     //считываем параметры из ссылки:
     //http://localhost:4200/dashboard/setData?id=1
@@ -126,4 +121,6 @@ export class SetDataFirebaseComponent implements OnInit {
   async getDataFromFirebase(collection: string, id: string) {
     this.client = await this.fss.getDataWithId(collection, id);
   }
+
+  
 }

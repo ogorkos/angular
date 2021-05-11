@@ -52,6 +52,8 @@ export class Client {
   }
 
   fromFirestore(doc): Client {   
+    console.log("fromFirestore(doc)",doc.data());
+    
     return new Client(
       doc.id,
       doc.data().firstName,

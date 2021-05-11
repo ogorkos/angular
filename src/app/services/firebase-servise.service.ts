@@ -17,7 +17,7 @@ export class FirebaseServiseService {
     console.log(client);    
     const docRef = this.db.firestore.collection('clients').doc();
     client.id = docRef.id;
-    client.userId = this.ls.user.user.uid;
+    // client.userId = this.ls.user.user.uid;
     console.log(client.toFirestore());
     docRef
       .set(client.toFirestore(), { merge: true })
@@ -38,13 +38,18 @@ export class FirebaseServiseService {
         .onSnapshot((querySnapshot) => {
           this.clients=[]
           querySnapshot.forEach((doc) => {
+            console.log('doc = ',doc);
+            
             this.clients.push(new Client().fromFirestore(doc));           
             console.log(this.clients);
           });    
                   
           this.clientsStatus.next(this.clients)
           resolve(this.clients)  
-        });
+        },(error) => {
+          console.log(error);
+          
+      });
       })        
     }
 
@@ -65,9 +70,7 @@ export class FirebaseServiseService {
           this.clients.push(new Client().fromFirestore(doc));
           
         });
-        console.log(this.clients);
-        
-        
+        console.log(this.clients);        
         this.clientsStatus.next(this.clients)
         resolve(true)
 
