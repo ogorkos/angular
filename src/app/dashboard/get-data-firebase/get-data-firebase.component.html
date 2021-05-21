@@ -36,7 +36,7 @@
             <td><i class="fas fa-user border-icon"></i> {{client.firstName}}</td>
             <td>{{client.lastName}}</td>
             <td><i class="fas fa-at border-icon"></i> {{client.email}}</td>
-            <td><i class="fas fa-phone border-icon"></i> {{client.phone}}</td>
+            <td><a href="tel:{{client.phone}}"><i class="fas fa-phone border-icon"></i> {{client.phone}}</a></td>
             <td>{{client.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
             <td><button class="myborder" (click)="openVerticallyCentered(content)" (click)="confirmDelete($event,client.id)"><i class="fas fa-user-times"></i></button></td>            
             <td><button class="myborder" (click)="editOrShowClient($event,client.id, 'edit')"><i class="fas fa-user-edit"></i></button></td> 

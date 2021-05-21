@@ -69,7 +69,10 @@ export class ViewContactsComponent implements OnInit {
     this.router.navigate(['dashboard/addContacts'], { queryParams: { id: id, collection: "workers" , editOrShow: editOrShow} });        
   }
 
-
-
+  sendMail(event, email){
+    event.stopPropagation()
+    window.open(`mailto:${email}`)
+  }
+ 
 
 }

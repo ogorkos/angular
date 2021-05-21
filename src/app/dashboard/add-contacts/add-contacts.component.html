@@ -69,15 +69,32 @@
          </div>
       </div>   
    </div>
-   <div class="form-row mb-3">
-     <label for="inputAddress">Address</label>
-     <input type="text" class="form-control " id="inputAddress"  required placeholder="Address"
-     [formControl]="myForm.controls['address']"
-     [ngClass]="{'is-invalid': !myForm.controls['address'].valid &&  myForm.controls['address'].touched, 
-     'is-valid': myForm.controls['address'].valid}" [readonly]='readonly'>
-     <div class="invalid-feedback">
-         Please provide a valid Address.
-     </div>
+   <div class="form-row ">
+      <div class="col-md-3 mb-3">
+        <label for="inputBirthday">Birthday</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="inputBirthday" placeholder="dd.mm.yyyy"  
+          [formControl]="myForm.controls['birthday']"
+          [readonly]='readonly' >  
+          
+          <!-- [ngClass]="{'is-invalid': !myForm.controls['birthday'].valid &&  myForm.controls['birthday'].touched, 
+          'is-valid': myForm.controls['birthday'].valid}"  -->
+
+          <div class="invalid-feedback">
+                Please enter a Birthday.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 mb-3">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control " id="inputAddress"  required placeholder="Address"
+        [formControl]="myForm.controls['address']"
+        [ngClass]="{'is-invalid': !myForm.controls['address'].valid &&  myForm.controls['address'].touched, 
+        'is-valid': myForm.controls['address'].valid}" [readonly]='readonly'>
+        <div class="invalid-feedback">
+            Please provide a valid Address.
+        </div>
+      </div>     
    </div>    
    <div class="form-row mb-3 textar pl-0">      
       <label for="inputNotes">Notes</label>

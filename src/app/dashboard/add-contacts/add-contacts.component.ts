@@ -115,52 +115,14 @@ export class AddContactsComponent implements OnInit {
     if (worker){this.worker = worker}       
   }  
 
-  // fromObjectToWorker(obj) {
-  //   obj && Object.assign(this, obj);
-  //   return this
-  // }
-
   fillWorkerInInput(worker:Worker){
-    // this.myForm.patchValue(new Worker().fromObjectToWorker(worker));    
-    this.myForm = this.fb.group({
-      firstName: [worker.firstName, [Validators.required, Validators.minLength(2)]],
-      lastName: [worker.lastName, [Validators.required, Validators.minLength(2)]],
-      email: [worker.email, [Validators.required, Validators.email]],    
-      birthday: [worker.birthday],    
-      phones: 
-      this.fb.array([], [Validators.required]),
-      address: [worker.address, [Validators.required, Validators.minLength(7)]],
-      notes: [worker.notes, []],
-    });    
+    this.myForm.patchValue(worker);        
     worker.phones.forEach(el => {
       const fa = (this.myForm.get('phones')as FormArray);
       fa.push(this.fb.group({
         name: [el.name, [Validators.required, Validators.minLength(10)]]
       }));
-    })
-    
-
-      // let  phoneSS = this.fromObjectToWorker([...worker.phones]);
-      // console.log(phoneSS);
-      // // this.myForm.setValue(worker)
-      
-      // this.myForm.patchValue(worker
-      //   // {
-      //   // firstName:worker.firstName,
-      //   // lastName: worker.lastName,
-      //   // email: worker.email, 
-      //   // birthday: worker.birthday,
-      //   // phones: worker.phones, 
-      //   // address: worker.address,
-      //   // notes: worker.notes,
-      // // }
-      // )
-      // this.myForm.patchValue({
-      //   phones :phoneSS
-      // })
-      console.log('fillWorkerInInput = ',this.myForm);    
-      console.log('fillWorkerInInput.phones = ',this.myForm.value.phones);    
-    // }, 1000);
+    })    
   }
 
   closeShow(){
@@ -169,14 +131,8 @@ export class AddContactsComponent implements OnInit {
   }
 
 
-
   async onSubmit(form: any) {
     form = new Worker().fromObjectToWorker(form);    
-   
-    // if (this.show) {
-    //   this.show = false;
-    //   this.router.navigate(['dashboard/viewContacts']);
-    // }
     if (this.edit) {
       this.spinServ.showSpinnerFunc(true)
       await this.fss.updateDataToFirebase(form, 'workers', this.idForEdit);

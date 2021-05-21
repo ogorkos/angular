@@ -12,6 +12,7 @@ th{
 }
 td{
    font-size: 12px;
+   cursor: pointer;
 }
 .trBody:hover{
    /* transform: translateY(1px); */
@@ -21,7 +22,10 @@ td{
 th, td {
    padding: 6px;
    vertical-align: middle;
-   cursor: pointer;
+   
+}
+tr{
+   border-bottom: #292b2c;
 }
 th {
    font-size: 12px;

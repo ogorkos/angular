@@ -13,6 +13,7 @@ export class SearchWorkersPipe implements PipeTransform {
     return  workers.filter((worker) => 
        worker.firstName.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1 
     || worker.lastName.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
+    || worker.birthday.indexOf(searchValue) !== -1
     || worker.email.toLowerCase().indexOf(searchValue.toLowerCase()) !== -1
     || worker.phones.filter(item => item.name.indexOf(searchValue) !== -1).length>0
      )
