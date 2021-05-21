@@ -19,11 +19,11 @@
          <thead >
            <tr class="thead">
              <th scope="col">#</th>
-             <th scope="col"><i class="fas fa-user border-icon"></i> Fullname</th>
-             <th scope="col"><i class="far fa-calendar-alt border-icon"></i> Birthday</th>
-             <th scope="col"><i class="fas fa-at border-icon"></i> Email</th>
-             <th scope="col"><i class="fas fa-phone border-icon"></i> Phone</th>
-             <th scope="col"><i class="fas fa-folder-plus border-icon"></i> Created</th>
+             <th scope="col"><i class="fas fa-user "></i> Fullname</th>
+             <th scope="col"><i class="far fa-calendar-alt "></i> Birthday</th>
+             <th scope="col"><i class="fas fa-at "></i> Email</th>
+             <th scope="col"><i class="fas fa-phone "></i> Phone</th>
+             <th scope="col"><i class="fas fa-folder-plus "></i> Created</th>
              <th scope="col">Delete</th>
              <th scope="col">Edit</th>
            </tr>
@@ -36,9 +36,9 @@
              <th scope="row">{{i+1}}</th>
              <td> {{worker.firstName}} {{worker.lastName}}</td>
              <td>{{worker.birthday}}</td>
-             <td><a (click)="$event.stopPropagation()" href="mailto:{{worker.email}}"><i class="far fa-paper-plane border-icon"></i> {{worker.email}}</a> </td>
+             <td (click)="$event.stopPropagation()" ><a href="mailto:{{worker.email}}"><i class="far fa-paper-plane "></i> {{worker.email}}</a> </td>
              <td> 
-              <p *ngFor="let phone of worker.phones"><a (click)="$event.stopPropagation()" href="tel:{{phone.name}}" ><i class="fas fa-phone-volume border-icon"></i>  {{phone.name}}</a></p>
+              <p *ngFor="let phone of worker.phones"><a (click)="$event.stopPropagation()" href="tel:{{phone.name}}" ><i class="fas fa-phone-volume"></i>  {{phone.name}}</a></p>
             </td>
              <td>{{worker.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
              <td><button class="myborder" (click)="openVerticallyCentered(content)" (click)="confirmDelete($event,worker.id)"><i class="fas fa-user-times"></i></button></td>            
