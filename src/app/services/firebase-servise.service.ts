@@ -10,23 +10,29 @@ import { Client } from '../models/client';
 export class FirebaseServiseService {
   clients: Client[] = [];
   clientsStatus = new BehaviorSubject<Client[]>([]);
+  addClientsStatus = new BehaviorSubject<string>(null);
 
   constructor(private db: AngularFirestore, private ls:LoginService) {}
 
-  addClient(client: Client) {
+  async addClient(client: Client) {
     console.log(client);    
     const docRef = this.db.firestore.collection('clients').doc();
     client.id = docRef.id;
     // client.userId = this.ls.user.user.uid;
     console.log(client.toFirestore());
-    docRef
+    await docRef
       .set(client.toFirestore(), { merge: true })
       // docRef.set(client,{merge: true})
       .then((docRef) => {
         console.log('Document written with ID: ', client.id);
+        this.addClientsStatus.next('Success')
+        // setTimeout(() => {
+        //   this.addClientsStatus.next(null)
+        // }, 1000);
       })
       .catch((error) => {
         console.error('Error adding document: ', error);
+        this.addClientsStatus.next('Error')        
       });
   }
 
@@ -118,10 +124,12 @@ export class FirebaseServiseService {
         .set(client.toFirestore(), { merge: true })
         .then((docRef) => {
           console.log('Document written with ID: ', docRef);
+          this.addClientsStatus.next('Success')
           resolve(this.getDataFromFirebase(collection, true));
         })
         .catch((error) => {
           console.error('Error adding document: ', error);
+          this.addClientsStatus.next('Error')
         });
     });
   }

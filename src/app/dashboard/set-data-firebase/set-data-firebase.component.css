@@ -8,3 +8,17 @@ label{
    font-size: 12px;
    font-weight: 600;
 }
+.success{
+   background-color:rgb(140, 252, 140);
+   font-size: large;
+}
+.error{
+   background-color:rgb(248, 143, 101);
+}
+.textar{
+   padding: 0 5px;
+}
+.mymodal{
+   /* height: 200px; */
+   padding: 50px;
+}

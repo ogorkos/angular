@@ -38,6 +38,8 @@ import { TimeStampToDatePipe } from './pipes/time-stamp-to-date.pipe';
 import { SearchInArrPipe } from './pipes/search-in-arr.pipe';
 import { AddContactsComponent } from './dashboard/add-contacts/add-contacts.component';
 import { ViewContactsComponent } from './dashboard/view-contacts/view-contacts.component';
+import { AddPhoneNumberComponent } from './myTests/add-phone-number/add-phone-number.component';
+import { SearchWorkersPipe } from './pipes/search-workers.pipe';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { ViewContactsComponent } from './dashboard/view-contacts/view-contacts.c
     SearchInArrPipe,
     AddContactsComponent,
     ViewContactsComponent,
+    AddPhoneNumberComponent,
+    SearchWorkersPipe,
     
   ],
   imports: [

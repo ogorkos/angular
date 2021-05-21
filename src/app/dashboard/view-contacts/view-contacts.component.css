@@ -1,0 +1,75 @@
+.thead{
+   background-color: rgb(248, 247, 161);
+   border-bottom: 2px solid gray;
+}
+.tborder{
+   border: 2px solid gray;
+   box-shadow: 3px 3px 3px gray;
+   padding-bottom: 20px;
+}
+th{
+   font-size: 14px;
+}
+td{
+   font-size: 12px;
+}
+.trBody:hover{
+   /* transform: translateY(1px); */
+   color: #178492;
+   /* cursor: pointer; */
+}
+th, td {
+   padding: 6px;
+   vertical-align: middle;
+   cursor: pointer;
+}
+th {
+   font-size: 12px;
+}
+.myborder{
+   border: 2px solid gray;
+   box-shadow: 2px 2px 2px gray;
+   border-radius: 4px;
+}
+button:hover{
+   background-color: yellow;
+   color: black;
+}
+i{
+   padding: 4px;  
+   color: #17A2B8; 
+   font-size: 14px;
+}
+.border-icon{
+   border: 1px solid gray;
+   border-radius: 4px;
+   box-shadow: 2px 2px 2px gray;
+   margin-right: 4px;
+}
+.modalWin{
+   position: absolute;
+   top: 200px;
+   left: 50%;
+   transform: translateX(-50%);
+   z-index: 1001;
+   width: 100wh;
+   height: 100vh;
+}
+
+@media only screen and (max-width: 768px) {
+   .border-icon{
+      display: none;
+   }
+
+   .dark-modal .modal-content {
+      background-color: #292b2c;
+      color: white;
+    }
+    .dark-modal .close {
+      color: white;
+    }
+    .light-blue-backdrop {
+      background-color: #5cb3fd;
+    }
+
+}

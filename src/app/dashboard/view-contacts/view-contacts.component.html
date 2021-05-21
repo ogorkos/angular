@@ -1,1 +1,61 @@
-<p>view-contacts works!</p>
+<div class="container " >
+   <div style="padding-bottom: 20px;">
+     <h2 class="text-center ">Clients:</h2>
+     <div class="btn-group" role="group" aria-label="Basic example">
+          
+       <div class="input-group mb-2">
+         <input  type="text" class="form-control bg-light border small shadow"  [(ngModel)]="searchTerm" placeholder="Search for..."
+             aria-label="Search" aria-describedby="basic-addon2">
+         <div class="input-group-append">
+             <button class="btn btn-info myborder" type="button">
+                 <i class="fas fa-search fa-sm" style="color:white"></i>
+             </button>
+         </div>
+       </div>
+   
+     </div>
+   
+       <table *ngIf="workers" class="table table-striped tborder mb-3 " >
+         <thead >
+           <tr class="thead">
+             <th scope="col">#</th>
+             <th scope="col">FirstName</th>
+             <th scope="col">LastName</th>
+             <th scope="col">Email</th>
+             <th scope="col">Phone</th>
+             <th scope="col">Created</th>
+             <th scope="col">Delete</th>
+             <th scope="col">Edit</th>
+           </tr>
+         </thead>
+   
+         <tbody>                    
+            <tr class="trBody" *ngFor="let worker of 
+            (workers | searchWorkers:searchTerm)             
+           ;let i = index" (click)="editOrShowWorker($event, worker.id,'show')" >          
+             <th scope="row">{{i+1}}</th>
+             <td><i class="fas fa-user border-icon"></i> {{worker.firstName}}</td>
+             <td>{{worker.lastName}}</td>
+             <td><i class="fas fa-at border-icon"></i> {{worker.email}}</td>
+             <td><i class="fas fa-phone border-icon"></i> 
+              <p *ngFor="let phone of worker.phones">{{phone.name}}</p>
+            </td>
+             <td>{{worker.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
+             <td><button class="myborder" (click)="openVerticallyCentered(content)" (click)="confirmDelete($event,worker.id)"><i class="fas fa-user-times"></i></button></td>            
+             <td><button class="myborder" (click)="editOrShowWorker($event,worker.id, 'edit')"><i class="fas fa-user-edit"></i></button></td> 
+           </tr>
+         </tbody>        
+       </table>
+   
+       <ng-template #content let-modal style="width:300px" class="modalWin">
+         <div class="modal-body">
+           <p>Are you sure you want to delete?</p>
+         </div>
+         <div class="modal-footer d-flex justify-content-around">
+           <button type="button" class="btn btn-info" (click)="delete()" (click)="modal.close('Close click')">Detele</button>
+           <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Canсel</button>
+         </div>
+       </ng-template>
+   </div>
+   
+ </div>

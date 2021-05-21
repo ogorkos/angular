@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, ActivatedRoute } from '@angular/router';
 import firebase from 'firebase/app';//for google auth
-// import { Observable} from 'rxjs';
-// import { User } from './user.model'
 // import { AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore'
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  // user$: Observable<any> // for User
   
   constructor(
     public auth:AngularFireAuth,

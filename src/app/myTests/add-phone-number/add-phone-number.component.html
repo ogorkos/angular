@@ -1,0 +1,22 @@
+<p>add-phone-number works!</p>
+<form [formGroup]="fg" class="spaced">
+   <h3>Nested in Group:</h3>
+   <div formGroupName="address" class="spaced">
+     <label>
+       <input type="text" formControlName="street">
+       valid: {{fg.get('address').get('street')?.valid}}
+     </label>
+   </div>
+   <h3>Nested in Array:</h3>
+   <div formArrayName="aliases" *ngFor="let alias of fg.get('aliases')['controls']; let i = index;" class="border">
+     <div [formGroupName]="i">
+       <label>
+         Alias {{i+1}}:
+         <input formControlName="name" placeholder="Item name">valid: {{alias.get('name')?.valid}}
+       </label>
+       <button type="button" (click)="deleteAlias(i)">X</button>
+     </div>
+   </div>
+   <button type="button" (click)="addNewAlias()">add</button>
+ </form>
+ <div>form valid: {{fg?.valid}}</div>

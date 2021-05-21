@@ -3,11 +3,11 @@ export class Worker {
    lastName: string = '';
    email: string = '';
    birthday: string = '';
-   phone: string [] = []; // чтобы было несколько ном тел
+   phones = []; // чтобы было несколько ном тел
    address: string = '';
    notes: string = '';
    private _id: string = '';
-   private _userId: string = '';
+  //  private _userId: string = '';
    private timestamp: number
    
  
@@ -22,11 +22,11 @@ export class Worker {
        lastName: this.lastName,
        email: this.email,
        birthday:this.birthday,
-       phone: this.phone,
+       phones: this.phones,
        address: this.address,
        notes: this.notes,
        id: this._id,
-       userId:this._userId,
+      //  userId:this._userId,
        timestamp: this.timestamp
      };
    }
@@ -37,10 +37,10 @@ export class Worker {
      lastName: string = '',
      email: string = '',
      birthday: string = '',
-     phone: string [] = [],
+     phones = [],
      address: string = '',
      notes: string = '',
-     userId:string = '',
+    //  userId:string = '',
      timestamp: number = new Date().getTime()
    ) {
      this.id = id;
@@ -48,10 +48,10 @@ export class Worker {
      this.lastName = lastName;
      this.email = email;
      this.birthday = birthday;
-     this.phone = phone;
+     this.phones = phones;
      this.address = address;
      this.notes = notes;
-     this.userId = userId;
+    //  this.userId = userId;
      this.timestamp = timestamp;
    }
  
@@ -62,7 +62,7 @@ export class Worker {
        doc.data().lastName,
        doc.data().email,
        doc.data().birthday,
-       doc.data().phone,
+       doc.data().phones,
        doc.data().address,
        doc.data().notes,
        doc.data().timestamp ? doc.data().timestamp : new Date().getTime()
@@ -77,12 +77,12 @@ export class Worker {
      this._id = val;
    }
  
-   get userId(): string {
-     return this._id;
-   }
+  //  get userId(): string {
+  //    return this._id;
+  //  }
  
-   set userId(val: string) {
-     this._userId = val;
-   }
+  //  set userId(val: string) {
+  //    this._userId = val;
+  //  }
  }
  

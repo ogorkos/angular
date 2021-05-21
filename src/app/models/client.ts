@@ -38,8 +38,7 @@ export class Client {
     address: string = '',
     notes: string = '',
     userId:string = '',
-    timestamp: number = 0
-    // new Date().getTime()
+    timestamp: number =  new Date().getTime()
   ) {
     this.id = id;
     this.firstName = firstName;

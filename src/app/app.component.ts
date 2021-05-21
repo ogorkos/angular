@@ -37,10 +37,10 @@ export class AppComponent implements OnInit, AfterViewInit{
     this.ls.checkIfUserLogin();
     
       // console.log(window.location.pathname);
-      if (window.location.pathname === '/login') {
+      // if (window.location.pathname === '/login') {
     
-        this.disableContainer = false
-      } else this.disableContainer = true
+      //   this.disableContainer = false
+      // } else this.disableContainer = true
     
   }
 

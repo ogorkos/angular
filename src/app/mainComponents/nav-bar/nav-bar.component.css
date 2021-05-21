@@ -1,4 +1,7 @@
 a{
+   font-size: 14px;
+}
+.pointer{
    cursor: pointer;
 }
 .navbar{
@@ -16,9 +19,6 @@ li:hover, .logout:hover{
    height: 50px;
    border-radius: 50%;
    background-color: #fff;
-}
-a{
-   font-size: 14px;
 }
 i{
    color: rgb(45, 45, 112);
