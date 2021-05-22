@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async onSubmit(form){
-    console.warn(this.userForm);
+    // console.warn(this.userForm);
     await this.loginServ.loginWithEmailPassword(this.userForm.value.email, this.userForm.value.password).catch((err)=>{
       console.log(err);      
       this.errorMessage=err

@@ -1,21 +1,21 @@
 <div class="container " >
    <div style="padding-bottom: 20px;">
-     <h2 class="text-center ">Clients:</h2>
+     <h1 class="text-center ">Contacts:</h1>
      <div class="btn-group" role="group" aria-label="Basic example">
           
-       <div class="input-group mb-2">
+       <div class="input-group mb-3 search">
          <input  type="text" class="form-control bg-light border small shadow"  [(ngModel)]="searchTerm" placeholder="Search for..."
              aria-label="Search" aria-describedby="basic-addon2">
          <div class="input-group-append">
-             <button class="btn btn-info myborder" type="button">
-                 <i class="fas fa-search fa-sm" style="color:white"></i>
+             <button class="btn btn-search" type="button">
+                 <i class="fas fa-search fa-sm"></i>
              </button>
          </div>
        </div>
    
      </div>
-   
-       <table *ngIf="workers" class="table table-striped tborder mb-3 " >
+     <!-- table-striped -->
+       <table *ngIf="workers" class="table tborder mb-3 " >
          <thead >
            <tr class="thead">
              <th scope="col">#</th>
@@ -33,12 +33,12 @@
             <tr class="trBody" *ngFor="let worker of 
             (workers | searchWorkers:searchTerm)             
            ;let i = index" (click)="editOrShowWorker($event, worker.id,'show')" >          
-             <th scope="row">{{i+1}}</th>
+             <th scope="row" style="color:black">{{i+1}}</th>
              <td> {{worker.firstName}} {{worker.lastName}}</td>
-             <td>{{worker.birthday}}</td>
+             <td>{{worker.birthday | date: 'dd.MM.yyyy'}}</td>
              <td (click)="$event.stopPropagation()" ><a href="mailto:{{worker.email}}"><i class="far fa-paper-plane "></i> {{worker.email}}</a> </td>
              <td> 
-              <p *ngFor="let phone of worker.phones"><a (click)="$event.stopPropagation()" href="tel:{{phone.name}}" ><i class="fas fa-phone-volume"></i>  {{phone.name}}</a></p>
+              <div *ngFor="let phone of worker.phones"><a (click)="$event.stopPropagation()" href="tel:{{phone.name}}" ><i class="fas fa-phone-volume"></i>  {{phone.name}}</a></div>
             </td>
              <td>{{worker.timestamp | date: 'dd/MM/yyyy hh:mm a'}}</td>
              <td><button class="myborder" (click)="openVerticallyCentered(content)" (click)="confirmDelete($event,worker.id)"><i class="fas fa-user-times"></i></button></td>            
@@ -52,7 +52,7 @@
            <p>Are you sure you want to delete?</p>
          </div>
          <div class="modal-footer d-flex justify-content-around">
-           <button type="button" class="btn btn-info" (click)="delete()" (click)="modal.close('Close click')">Detele</button>
+           <button type="button" class="btn btn-del" (click)="delete()" (click)="modal.close('Close click')">Detele</button>
            <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Canсel</button>
          </div>
        </ng-template>

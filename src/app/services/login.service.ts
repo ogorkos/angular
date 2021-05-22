@@ -38,7 +38,7 @@ async checkIfUserLogin(){
   // return new Promise(async (resolve, reject) => {
     if (this.user) {
       // resolve(true)
-      console.log(this.user);      
+      // console.log(this.user);      
       return 
     }  
     await this.auth.onAuthStateChanged((user) =>{
@@ -71,7 +71,7 @@ async loginWithGoogle() {
     await this.auth
     .signInWithPopup(provider)
     .then(res => {
-      console.log(res);  
+      // console.log(res);  
       this.user=res;
       // this.userPhotoURL = this.user.user.photoURL;
       // this.userName = this.user.user.displayName;

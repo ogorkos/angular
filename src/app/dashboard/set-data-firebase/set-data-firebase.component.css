@@ -22,3 +22,11 @@ label{
    /* height: 200px; */
    padding: 50px;
 }
+.btn-ok{
+   background-color: rgb(43, 62, 231);
+   color: yellow;
+}
+.btn-ok:hover{
+   background-color: rgb(11, 28, 177);
+   color: yellow;
+}

@@ -23,7 +23,7 @@ export class FirebaseForWorkerService {
     await docRef
       .set(worker.toFirestore(), { merge: true })
       .then((docRef) => {
-        console.log('Document written with ID: ', worker.id);
+        // console.log('Document written with ID: ', worker.id);
         this.addWorkerStatus.next('Success')
       })
       .catch((error) => {
@@ -63,7 +63,7 @@ export class FirebaseForWorkerService {
         querySnapshot.forEach((doc) => {
           this.workers.push(new Worker().fromFirestore(doc));          
         });
-        console.log(this.workers);        
+        // console.log(this.workers);        
         this.workersStatus.next(this.workers)
         resolve(true)
 
@@ -108,13 +108,13 @@ export class FirebaseForWorkerService {
   updateDataToFirebase(worker: Worker, collection: string, id: string) {
     return new Promise<any>((resolve, reject) => {
       const docRef = this.db.firestore.collection(collection).doc(id);
-      console.log(docRef.id);
-      console.log(worker);
+      // console.log(docRef.id);
+      // console.log(worker);
       worker.id = docRef.id;
       docRef
         .set(worker.toFirestore(), { merge: true })
         .then((docRef) => {
-          console.log('Document written with ID: ', docRef);
+          // console.log('Document written with ID: ', docRef);
           this.addWorkerStatus.next('Success')
           resolve(this.getDataFromFirebase(collection, true));
         })

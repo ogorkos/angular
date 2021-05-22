@@ -52,8 +52,7 @@ export class AddContactsComponent implements OnInit {
       this.fb.array([], [Validators.required]),
       address: ['', [Validators.required, Validators.minLength(7)]],
       notes: ['', []],
-    });
-    // const fa = (this.myForm.get('phones')as FormArray);
+    });    
     
     this.fss.addWorkerStatus.subscribe((addWorkerStat:string) => {this.addWorkerStat = addWorkerStat})
 
@@ -67,7 +66,6 @@ export class AddContactsComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       if (params.collection && params.id) {
         this.getWorker(params.id)
-        // this.getDataFromFirebase(params.collection, params.id);
         if (params.editOrShow ==="edit") {          
           this.edit = true;
           this.title = "Edit"
@@ -99,7 +97,7 @@ export class AddContactsComponent implements OnInit {
   addPhone(){
     const fa = (this.myForm.get('phones')as FormArray);
     fa.push(this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(10)]]
+      name: ['', [Validators.required, Validators.minLength(9)]]
     }));
   }
   deletePhone(i:number){
@@ -110,7 +108,6 @@ export class AddContactsComponent implements OnInit {
 
   getWorker(id: string){
     const worker = this.fss.workers.find(cl => cl.id === id)
-    console.log('worker from array workers', worker);    
     this.fillWorkerInInput(worker)      
     if (worker){this.worker = worker}       
   }  
@@ -120,7 +117,7 @@ export class AddContactsComponent implements OnInit {
     worker.phones.forEach(el => {
       const fa = (this.myForm.get('phones')as FormArray);
       fa.push(this.fb.group({
-        name: [el.name, [Validators.required, Validators.minLength(10)]]
+        name: [el.name, [Validators.required, Validators.minLength(9)]]
       }));
     })    
   }
@@ -160,7 +157,7 @@ export class AddContactsComponent implements OnInit {
   }
 
 
-  test(){
-    console.log(this.myForm);
-  }
+  // test(){
+  //   console.log(this.myForm);
+  // }
 }

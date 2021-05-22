@@ -11,10 +11,10 @@ export class IfUserLogin implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean{
-    // if (this.loginServ.user){
+    if (this.loginServ.user){
       return true
-    // } else return false
-    // return this.loginServ.user
+    } else return false
+    return this.loginServ.user
     // return false
   }
 }

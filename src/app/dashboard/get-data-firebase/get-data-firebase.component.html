@@ -1,21 +1,21 @@
 <div class="container " >
   <div style="padding-bottom: 20px;">
-    <h2 class="text-center ">Clients:</h2>
+    <h1 class="text-center ">Clients:</h1>
     <div class="btn-group" role="group" aria-label="Basic example">
          
-      <div class="input-group mb-2">
+      <div class="input-group mb-3 search">
         <input  type="text" class="form-control bg-light border small shadow"  [(ngModel)]="searchTerm" placeholder="Search for..."
             aria-label="Search" aria-describedby="basic-addon2">
         <div class="input-group-append">
-            <button class="btn btn-info myborder" type="button">
-                <i class="fas fa-search fa-sm" style="color:white"></i>
+            <button class="btn btn-search " type="button">
+                <i class="fas fa-search fa-sm" ></i>
             </button>
         </div>
       </div>
   
     </div>
   
-      <table *ngIf="clients" class="table table-striped tborder mb-3 " >
+      <table *ngIf="clients" class="table tborder mb-3 " >
         <thead >
           <tr class="thead">
             <th scope="col">#</th>
@@ -23,7 +23,7 @@
             <th scope="col">LastName</th>
             <th scope="col"><i class="fas fa-at "></i> Email</th>
             <th scope="col"><i class="fas fa-phone "></i> Phone</th>
-            <th scope="col">Created</th>
+            <th scope="col"><i class="fas fa-folder-plus "></i> Created</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
           </tr>
@@ -32,7 +32,7 @@
         
         <tbody >                    
           <tr class="trBody" *ngFor="let client of (clients | searchClientInArrPipe:searchTerm) ;let i = index" (click)="editOrShowClient($event, client.id,'show')" >          
-            <th scope="row">{{i+1}}</th>
+            <th scope="row" style="color:black">{{i+1}}</th>
             <td>{{client.firstName}}</td>
             <td>{{client.lastName}}</td>
             <td (click)="$event.stopPropagation()"><a href="mailto:{{client.email}}"><i class="fas fa-paper-plane"></i> {{client.email}}</a></td>
@@ -49,7 +49,7 @@
           <p>Are you sure you want to delete?</p>
         </div>
         <div class="modal-footer d-flex justify-content-around">
-          <button type="button" class="btn btn-info" (click)="delete()" (click)="modal.close('Close click')">Detele</button>
+          <button type="button" class="btn btn-del" (click)="delete()" (click)="modal.close('Close click')">Detele</button>
           <button type="button" class="btn btn-danger" (click)="modal.close('Close click')">Canсel</button>
         </div>
       </ng-template>

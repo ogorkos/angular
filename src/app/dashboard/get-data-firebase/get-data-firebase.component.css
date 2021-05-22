@@ -9,32 +9,58 @@
 }
 th{
    font-size: 14px;
+   font-weight: 500;
+   color: rgb(255, 238, 0);
 }
 td{
-   font-size: 12px;
+   font-size: 14px;
+   cursor: pointer;
 }
 .trBody:hover{
-   /* transform: translateY(1px); */
-   color: #178492;
-   /* cursor: pointer; */
+   transform:scale(1.005);
+   background-color: rgba(247, 247, 205, 0.5);
 }
 th, td {
    padding: 6px;
    vertical-align: middle;
-   cursor: pointer;
+}
+.thead{
+   background-color: rgb(43, 62, 231);
+   border-bottom: 2px solid gray;
 }
 th {
-   font-size: 12px;
+   font-size: 14px;
+}
+.search{   
+   border-radius: 4px;
+   box-shadow: 3px 3px 4px gray;
+}
+.search input, .search button{
+   font-size: 14px;
+   padding: 4px;
 }
 .myborder{
    border: 2px solid gray;
    box-shadow: 2px 2px 2px gray;
    border-radius: 4px;
 }
-button:hover{
+.myborder:hover{
    background-color: yellow;
    color: black;
 }
+.btn-search{
+   background-color: rgb(43, 62, 231);   
+}
+.fa-search{
+   color: rgb(255, 238, 0);
+}
+.btn-search:hover{
+   background-color: rgba(43, 62, 231, 0.74);   
+}
+/* button:hover{
+   background-color: yellow;
+   color: black;
+} */
 i{
    padding: 4px;  
    color: #17A2B8; 
@@ -54,6 +80,10 @@ i{
    z-index: 1001;
    width: 100wh;
    height: 100vh;
+}
+.btn-del{
+   background-color: rgba(43, 62, 231);   
+   color: white;
 }
 
 @media only screen and (max-width: 768px) {

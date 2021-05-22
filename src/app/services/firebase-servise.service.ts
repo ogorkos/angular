@@ -15,16 +15,16 @@ export class FirebaseServiseService {
   constructor(private db: AngularFirestore, private ls:LoginService) {}
 
   async addClient(client: Client) {
-    console.log(client);    
+    // console.log(client);    
     const docRef = this.db.firestore.collection('clients').doc();
     client.id = docRef.id;
     // client.userId = this.ls.user.user.uid;
-    console.log(client.toFirestore());
+    // console.log(client.toFirestore());
     await docRef
       .set(client.toFirestore(), { merge: true })
       // docRef.set(client,{merge: true})
       .then((docRef) => {
-        console.log('Document written with ID: ', client.id);
+        // console.log('Document written with ID: ', client.id);
         this.addClientsStatus.next('Success')
         // setTimeout(() => {
         //   this.addClientsStatus.next(null)
@@ -72,7 +72,7 @@ export class FirebaseServiseService {
           this.clients.push(new Client().fromFirestore(doc));
           
         });
-        console.log(this.clients);        
+        // console.log(this.clients);        
         this.clientsStatus.next(this.clients)
         resolve(true)
 
@@ -105,7 +105,7 @@ export class FirebaseServiseService {
       alovelaceDocumentRef
         .get()
         .then((doc) => {
-          console.log(doc.data());
+          // console.log(doc.data());
           resolve(doc.data());
         })
         .catch((error) => {
@@ -117,13 +117,13 @@ export class FirebaseServiseService {
   updateDataToFirebase(client: Client, collection: string, id: string) {
     return new Promise<any>((resolve, reject) => {
       const docRef = this.db.firestore.collection(collection).doc(id);
-      console.log(docRef.id);
-      console.log(client);
+      // console.log(docRef.id);
+      // console.log(client);
       client.id = docRef.id;
       docRef
         .set(client.toFirestore(), { merge: true })
         .then((docRef) => {
-          console.log('Document written with ID: ', docRef);
+          // console.log('Document written with ID: ', docRef);
           this.addClientsStatus.next('Success')
           resolve(this.getDataFromFirebase(collection, true));
         })

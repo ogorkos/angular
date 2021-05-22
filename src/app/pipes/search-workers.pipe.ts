@@ -22,4 +22,3 @@ export class SearchWorkersPipe implements PipeTransform {
   serchPhones(worker: Worker, searchValue: string){
     return worker.phones.filter((phone) => phone.name === searchValue)}
 }
-// || worker.phones.filter(v => v.name.indexOf(searchValue) !== -1)

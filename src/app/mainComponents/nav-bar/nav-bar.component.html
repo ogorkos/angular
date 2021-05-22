@@ -1,7 +1,7 @@
 <div *ngIf="navBarStatus">
 
-   <nav class="navbar navbar-expand-sm navbar-light bg-info">
-      <a class="navbar-brand" ><b> Dashboard<span *ngIf="userName">,</span> {{userName}} </b></a>
+   <nav class="navbar navbar-expand-sm navbar-light ">
+      <a class="navbar-brand" ><b> Company CRM<span *ngIf="userName">, </span> {{userName}} </b></a>
       <img *ngIf="userPhotoURL" class="userImg mr-2" [src]="userPhotoURL">     
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation" (click)="showNavBarFunc()">
       <span class="navbar-toggler-icon"></span>     

@@ -44,7 +44,6 @@
       
       <div class="col-md-4 mb-3 pr-1 pl-0"  formArrayName="phones"
       *ngFor="let phone of myForm.get('phones')['controls']; let i = index;">
-      <!-- <p>{{phone.name}}</p> -->
       <label  for='inputPhone{{i}}'>Phone</label>
          <div [formGroupName]="i" class="d-flex">
             <div class="d-flex flex-column">
@@ -73,7 +72,7 @@
       <div class="col-md-3 mb-3">
         <label for="inputBirthday">Birthday</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="inputBirthday" placeholder="dd.mm.yyyy"  
+          <input type="date" class="form-control" id="inputBirthday" placeholder="dd.mm.yyyy"  
           [formControl]="myForm.controls['birthday']"
           [readonly]='readonly' >  
           
@@ -103,9 +102,9 @@
       ></textarea>
    </div>   
    
-   <button *ngIf="show" [disabled]="!myForm.valid && !readonly"  class="btn btn-info pr-4 pl-4"  type="button" (click)='closeShow()' >Ok</button>
+   <button *ngIf="show" [disabled]="!myForm.valid && !readonly"  class="btn btn-ok pr-4 pl-4"  type="button" (click)='closeShow()' >Ok</button>
 
-   <button *ngIf="!(show)" [disabled]="!myForm.valid && !readonly"  class="btn btn-info pr-4 pl-4" type="submit"  >Ok</button>
+   <button *ngIf="!(show)" [disabled]="!myForm.valid && !readonly"  class="btn btn-ok pr-4 pl-4" type="submit"  >Ok</button>
 
 
    <!-- <button   class="btn btn-info pr-4 pl-4" type="button" (click)='test()'  >TEST Ok</button> -->

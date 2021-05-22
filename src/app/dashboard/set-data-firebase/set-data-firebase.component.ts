@@ -43,7 +43,7 @@ export class SetDataFirebaseComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.minLength(10)]],
+      phone: ['', [Validators.required, Validators.minLength(9)]],
       address: ['', [Validators.required, Validators.minLength(7)]],
       notes: ['', []],
     });
